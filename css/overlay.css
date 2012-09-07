@@ -1,0 +1,235 @@
+/** Copyright 2007 Google Inc. All rights reserved. */
+
+/**
+ * CSS styles for the Custom Search Engine overlay built on top of AJAXSearch
+ * API
+ */
+
+.cse-closeResults {
+  float: right;
+}
+
+.cse-closeResults a {
+  padding: 3px 5px;
+  border: 1px solid #666;
+  color:  #000;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.cse-closeResults a:hover {
+  background: #ddd;
+  border: 1px solid #000;
+}
+
+.cse-overlay-bg {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: #000;
+}
+
+.cse-overlay {
+  text-align: left;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  padding: 10px;
+  width: 600px;
+  background-color: #FFF;
+  border: 1px solid #333;
+  font-size: small;
+}
+
+/**
+ * Custom AJAXSearch styles
+ */
+
+.gsc-resultsHeader,
+.gs-visibleUrl-short,
+.gs-watermark
+ { display: none; }
+
+.gs-visibleUrl {
+  color: #008000;
+}
+
+.gs-visibleUrl-long {
+  overflow: hidden;
+}
+
+.gs-title {
+  font-size: medium;
+}
+
+.gsc-trailing-more-results,
+.gsc-webResult,
+.gs-divider {
+  margin-bottom: 1em;
+}
+
+.gs-divider {
+  margin-bottom: 1em;
+  text-align: center;
+  color: #676767;
+}
+
+
+/**
+ * Default AJAXSearch styles largely from
+ * http://www.google.com/uds/css/gsearch.css
+ */
+
+/* control inputs
+ * .gsc-search-box : the container that hosts the text input area
+ * .gsc-input : the text input area
+ */
+form.gsc-search-box {
+  font-size: 13px;
+  margin-top : 0px;
+  margin-right : 0px;
+  margin-bottom : 4px;
+  margin-left : 0px;
+  width: 150px;
+}
+
+/*
+ * This table contains the input element as well as the search button
+ * Note that the search button column is fixed width, designed to hold the
+ * button div's background image
+ */
+table.gsc-search-box {
+  border-style : none;
+  border-width : 0px;
+  border-spacing : 0px 0px;
+  width : 100%;
+  margin-bottom : 2px;
+}
+
+table.gsc-search-box td {
+  vertical-align : middle;
+}
+
+table.gsc-search-box td.gsc-input {
+  padding-right : 2px;
+}
+
+td.gsc-search-button {
+  width : 1%;
+}
+
+/**
+ * undo common generic table rules
+ * that tend to impact branding
+ */
+table.gsc-branding td,
+table.gsc-branding {
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+  border : none;
+}
+
+table.gsc-branding {
+  border-style : none;
+  border-width : 0px;
+  border-spacing : 0px 0px;
+  width : 100%;
+}
+
+td.gsc-branding-text {
+  vertical-align : top;
+}
+
+td.gsc-branding-text div.gsc-branding-text {
+  padding-bottom : 2px;
+  text-align : right;
+  color : #676767;
+  font-size : 11px;
+  margin-right : 2px;
+}
+
+td.gsc-branding-img-noclear {
+  width : 51px;
+  vertical-align : bottom;
+}
+
+td.gsc-branding-img {
+  width : 65px;
+  vertical-align : bottom;
+}
+
+table.gsc-branding-vertical td.gsc-branding-text div.gsc-branding-text {
+  margin-right : 0px;
+  text-align : center;
+}
+
+table.gsc-branding-vertical td.gsc-branding-img-noclear {
+  text-align : center;
+}
+
+div.gsc-branding-img,
+div.gsc-branding-img-noclear,
+img.gsc-branding-img,
+img.gsc-branding-img-noclear {
+  padding-top : 1px;
+}
+
+img.gsc-branding-img,
+img.gsc-branding-img-noclear {
+  margin : 0 0 0 0;
+  padding-right : 0;
+  padding-left : 0;
+  padding-bottom : 0;
+  border : none;
+  display : inline;
+}
+
+a.gsc-branding-clickable {
+  cursor : pointer;
+}
+
+input.gsc-search-button {
+  margin-left : 2px;
+}
+
+/*
+ * Given that this is sitting in a variable width tabel cell, the idea is
+ * for it to consume the entire cell. The adjacent cell contains the search
+ * button and that is a fixed width cell.
+ */
+input.gsc-input {
+  padding-left : 2px;
+  border-style : solid;
+  border-width : 1px;
+  border-color : #BCCDF0;
+  width : 150px;
+}
+
+.gsc-results .gsc-cursor-box .gsc-trailing-more-results {
+  margin-bottom : 0px;
+  display : inline;
+}
+
+.gsc-results .gsc-cursor {
+  display : inline;
+}
+
+.gsc-results .gsc-cursor-box {
+  margin-bottom : 10px;
+}
+
+.gsc-results .gsc-cursor-box .gsc-cursor-page {
+  cursor : pointer;
+  color : #000000;
+  text-decoration: underline;
+  margin-right : 8px;
+  display : inline;
+}
+
+.gsc-results .gsc-cursor-box .gsc-cursor-current-page {
+  color : #A90A08;
+  font-weight : bold;
+  text-decoration: none;
+}
+

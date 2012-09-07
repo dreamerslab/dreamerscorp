@@ -1,0 +1,1 @@
+(function(a){a(function(){var b=function(b,c){a(b).click(function(){a.scrollTo(a(c),{duration:1e3})})};b(".nav-about","#page-wrap");b(".nav-recruit","#nav-recruit");b(".nav-contact","#nav-contact")})})(jQuery)

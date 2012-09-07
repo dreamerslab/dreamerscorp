@@ -1,0 +1,39 @@
+###Begin HTTP Express
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule \.(jpeg|jpg|gif|bmp|png|swf|js|css)$ ./wp-content/plugins/http-express/do_http_header.php?file=%{REQUEST_FILENAME} [L]
+</IfModule>
+###End HTTP Express
+
+
+
+
+# BEGIN WordPress
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /blog/
+# STEALTH-LOGIN 
+RewriteRule ^_logout wp-login.php?action=logout&amp;_wpnonce=b88b3c1d82&stealth_out_key=5hyd0y2eq2f0aqf135acv0mr4q [L]
+RewriteRule ^_login wp-login.php?stealth_in_key=1aynr2j6vulf1nieuwbyg35plh&redirect_to=http://dreamerscorp.com/blog/wp-admin/ [R,L]
+RewriteRule ^_admin wp-admin/?stealth_admin_key=u4joxwnloqkzm0p41jbctb32ft [R,L]
+RewriteCond %{HTTP_REFERER} !^http://dreamerscorp.com/blog/wp-admin 
+RewriteCond %{HTTP_REFERER} !^http://dreamerscorp.com/blog/wp-login\.php 
+RewriteCond %{HTTP_REFERER} !^http://dreamerscorp.com/blog/_login 
+RewriteCond %{HTTP_REFERER} !^http://dreamerscorp.com/blog/_admin 
+RewriteCond %{QUERY_STRING} !^stealth_in_key=1aynr2j6vulf1nieuwbyg35plh 
+RewriteCond %{QUERY_STRING} !^stealth_out_key=5hyd0y2eq2f0aqf135acv0mr4q 
+RewriteCond %{QUERY_STRING} !^stealth_reg_key=sxy0jb1nijy0l5hxpmk0kpvfwo 
+RewriteCond %{QUERY_STRING} !^stealth_admin_key=u4joxwnloqkzm0p41jbctb32ft 
+RewriteRule ^wp-login\.php http://dreamerscorp.com/blog [L]
+RewriteCond %{QUERY_STRING} ^loggedout=true 
+RewriteRule ^wp-login\.php http://dreamerscorp.com/blog [L]
+ 
+# END STEALTH-LOGIN
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /blog/index.php [L]
+</IfModule>
+
+# END WordPress

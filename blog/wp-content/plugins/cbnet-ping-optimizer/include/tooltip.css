@@ -1,0 +1,16 @@
+#ddctooltip{
+	position: absolute;
+	left: -300px;
+	width: 150px;
+	border: 1px solid black;
+	padding: 2px;
+	background-color: lightyellow;
+	visibility: hidden;
+	z-index: 100;
+}
+#ddcpointer{
+	position:absolute;
+	left: -300px;
+	z-index: 101;
+	visibility: hidden;
+}

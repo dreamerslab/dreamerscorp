@@ -1,0 +1,11 @@
+/*! Copyright 2011, Ben Lin (http://dreamerslab.com/)
+* Licensed under the MIT License (LICENSE.txt).
+*
+* Version: 1.0.7
+*
+* Requires: 
+* jQuery 1.3.0+, 
+* jQuery Center plugin 1.0.0+ https://github.com/dreamerslab/jquery.center
+*/
+// wrap all the code in an anonymous function to prevent global vars
+(function(a,b){var c={},d=0,e,f=[function(){}];a.msg=function(){var g,h,i,j,k,l,m;return i=[].shift.call(arguments),j={}.toString.call(i),k=a.extend({afterBlock:function(){},autoUnblock:!0,center:{topPercentage:.4},css:{},clickUnblock:!0,content:"Please wait...",fadeIn:200,fadeOut:300,bgPath:"",klass:"black-on-white",method:"appendTo",target:"body",timeOut:2400,z:1e3},c),j==="[object Object]"&&a.extend(k,i),l={unblock:function(){g=a("#jquery-msg-overlay").fadeOut(k.fadeOut,function(){f[k.msgID](g),g.remove()}),clearTimeout(e)}},m={unblock:function(a,b){var c=a===undefined?0:a;k.msgID=b===undefined?d:b,setTimeout(function(){l.unblock()},c)},replace:function(b){if({}.toString.call(b)!=="[object String]")throw"$.msg('replace'); error: second argument has to be a string";a("#jquery-msg-content").empty().html(b).center(k.center)},overwriteGlobal:function(a,b){c[a]=b}},d--,k.msgID=k.msgID===undefined?d:k.msgID,f[k.msgID]=k.beforeUnblock===undefined?function(){}:k.beforeUnblock,j==="[object String]"?m[i].apply(m,arguments):(g=a('<div id="jquery-msg-overlay" class="'+k.klass+'" style="position:absolute; z-index:'+k.z+"; top:0px; right:0px; left:0px; height:"+a(b).height()+'px;">'+'<img src="'+k.bgPath+'blank.gif" id="jquery-msg-bg" style="width: 100%; height: 100%; top: 0px; left: 0px;"/>'+'<div id="jquery-msg-content" class="jquery-msg-content" style="position:absolute;">'+k.content+"</div>"+"</div>"),g[k.method](k.target),h=a("#jquery-msg-content").center(k.center).css(k.css).hide(),g.hide().fadeIn(k.fadeIn,function(){h.fadeIn("fast").children().andSelf().bind("click",function(a){a.stopPropagation()}),k.afterBlock.call(m,g),k.clickUnblock&&g.bind("click",function(a){a.stopPropagation(),l.unblock()}),k.autoUnblock&&(e=setTimeout(l.unblock,k.timeOut))})),this}})(jQuery,document)

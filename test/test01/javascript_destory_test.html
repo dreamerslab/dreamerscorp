@@ -1,0 +1,366 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=windows-1250">
+  <title>javascript destory test</title>
+    <script src="http://www.google.com/jsapi"></script>
+    <script>
+        google.load("jquery", "1.3.2");
+        google.load("jqueryui", "1.7.1");
+    </script>
+    <script type="text/javascript">
+      $(document).ready( function() {
+        $('#wrap').draggable({
+          cursor:'move'
+        });
+        $('#box').setCenter(); // set the msg box in center
+        $('#msg').hide(); // hide it
+        // fire selectable on doc ready
+        $('#container ul').selectable({
+          filter:'li.item',
+          stop:function(){
+            edit(); // fire function edit on selectable stop event
+          }
+        });
+        function edit(){
+          // fire function when edit btn clicked
+          $('.edit').click(function(){
+            var btnClass=$(this).attr('id'); // get edit btn id to pass to switch
+            var selectedItemAmount=0; // declaim a variable
+            // count how many items are selected
+            $('.ui-selected').each(function(){
+              selectedItemAmount=selectedItemAmount+1;
+            });
+            // private edit function for each edit ( edit title, width, ..... )
+            function _edit(boxTitle,selectedItemAmount){
+              $('#box .boxTitle').html(boxTitle); // change the msg box title
+              $('#box .yes').click(function(){
+                alert(boxTitle + ' for ' + selectedItemAmount + ' selected item'); // show us how many times the function is excute when click on yes btn
+                $('#msg').hide(); // hide msg box when yes btn is clicked
+              });
+            }
+            // a loop that define what kind of "edit" is fired
+            switch(btnClass){
+              case 'editTitle':
+                boxTitle='edit title';
+                _edit(boxTitle,selectedItemAmount);
+                break;
+              case 'editWidth':
+                boxTitle='edit width';
+                _edit(boxTitle,selectedItemAmount);
+                break;
+              case 'editHeight':
+                boxTitle='edit height';
+                _edit(boxTitle,selectedItemAmount);
+                break;
+              case 'editColor':
+                boxTitle='edit color';
+                _edit(boxTitle,selectedItemAmount);
+                break;
+            }            
+            $('#msg').show(); // show msg box
+            // hide msg box when no btn is clicked
+            $('#box .no').click(function(){
+              $('#msg').hide();
+            });
+          });
+        }
+      });
+      // set center
+      $.fn.setCenter = function(){
+        var boxLeft=(($(window).width())-($(this).outerWidth()))/2;
+        $(this).css({
+          'left':boxLeft
+        });
+      };// oef set center
+    </script>
+    <style>
+      *{
+        margin: 0;
+        padding: 0;
+        font-family:"Helvetica","lucida grande",tahoma,aria;
+      }      
+      li{
+        list-style-position: outside;
+        list-style-image: none;
+        list-style-type: none;
+      }
+      .clearfix:after{
+        content: ".";
+        display: block;
+        height: 0;
+        clear: both;
+        visibility: hidden;
+      }
+      .clearfix{
+        display: inline-block;
+      }
+      * html .clearfix{
+        height: 1%;
+      }
+      .clearfix{
+        display: block;
+      }
+      .btn{
+        cursor:pointer;
+        background:#ccc;
+      }
+      a.btn:hover,li.btn:hover{
+        color:#fff;
+        background:#333;
+        position:relative;
+        top:1px;
+      }
+      #code{
+        width:800px;
+        padding:20px;
+      }
+      #wrap{
+        width:360px;
+        top:10px;
+        right:10px;
+        position:absolute;
+        z-index:5;
+        background:#eee;
+      }
+      #sample{        
+        margin:0 auto;
+        border:3px dashed #ccc;
+      }
+      li{
+        float:left;
+        display:inline;
+      }
+      #toolbar{
+        padding:5px 0;
+        border-bottom:1px solid #ccc;
+      }
+      li.edit{        
+        margin:3px;
+        padding:1px 5px;
+        font-weight:bolder;
+      }
+      #container ul{
+        padding:20px;
+      }
+      .item{
+        background-color:aliceBlue;
+        border:1px solid blue;
+        color:blue;
+        height:40px;
+        width:40px;
+        margin:10px;
+      }
+      .ui-selecting{
+        background:#FFCC00;
+        border:1px solid red;
+        color:red;
+      }
+      .ui-selected{
+        background-color:honeyDew;
+        border:1px solid greenYellow;
+        color:greenYellow;
+        opacity:0.8;
+      }
+      #desc{
+        font-size:12px;
+        margin:10px auto;
+        padding:20px;
+        border:3px dashed #ccc;
+        width:310px;
+        letter-spacing:0.05em;
+        word-spacing:0.05em;
+        line-height:1.5em;
+      }
+      #desc p{
+        margin:0 0 15px;
+      }
+      #msg{
+        width:100%;
+        height:100%;
+        position:absolute;
+        z-index:10;
+        top:0;
+      }
+      #overlay{
+        background:#000;
+        opacity:0.7;
+        width:100%;
+        height:100%;        
+      }
+      #box{
+        width:200px;
+        padding:20px;
+        background:#fff;
+        position:absolute;
+        z-index:15;
+        top:40%;
+      }
+      #box p{
+        margin:0 0 5px;
+      }
+      #box .btn{
+        padding:2px 5px;
+        border:1px solid #666;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="code">
+      <xmp>
+      javascript
+
+      $(document).ready( function() {
+        $('#wrap').draggable({
+          cursor:'move'
+        });
+        $('#box').setCenter(); // set the msg box in center
+        $('#msg').hide(); // hide it
+        // fire selectable on doc ready
+        $('#container ul').selectable({
+          filter:'li.item',
+          stop:function(){
+            edit(); // fire function edit on selectable stop event
+          }
+        });
+        function edit(){
+          // fire function when edit btn clicked
+          $('.edit').click(function(){
+            var btnClass=$(this).attr('id'); // get edit btn id to pass to switch
+            var selectedItemAmount=0; // declaim a variable
+            // count how many items are selected
+            $('.ui-selected').each(function(){
+              selectedItemAmount=selectedItemAmount+1;
+            });
+            // private edit function for each edit ( edit title, width, ..... )
+            function _edit(boxTitle,selectedItemAmount){
+              $('#box .boxTitle').html(boxTitle); // change the msg box title
+              $('#box .yes').click(function(){
+                // show us how many times the function is excute when click on yes btn
+                alert('edit ' + selectedItemAmount + ' selected item title');
+                $('#msg').hide(); // hide msg box when yes btn is clicked
+              });
+            }
+            // a loop that define what kind of "edit" is fired
+            switch(btnClass){
+              case 'editTitle':
+                boxTitle='edit title';
+                _edit(boxTitle,selectedItemAmount);
+                break;
+              case 'editWidth':
+                boxTitle='edit width';
+                _edit(boxTitle,selectedItemAmount);
+                break;
+              case 'editHeight':
+                boxTitle='edit height';
+                _edit(boxTitle,selectedItemAmount);
+                break;
+              case 'editColor':
+                boxTitle='edit color';
+                _edit(boxTitle,selectedItemAmount);
+                break;
+            }
+            $('#msg').show(); // show msg box
+            // hide msg box when no btn is clicked
+            $('#box .no').click(function(){
+              $('#msg').hide();
+            });
+          });
+        }
+      });
+      // set center
+      $.fn.setCenter = function(){
+        var boxLeft=(($(window).width())-($(this).outerWidth()))/2;
+        $(this).css({
+          'left':boxLeft
+        });
+      };// oef set center
+
+
+      html
+
+      <div id="sample">
+        <div id="toolbar">
+        <ul class="clearfix">
+          <li id="editTitle" class="edit btn">edit title</li>
+          <li id="editWidth" class="edit btn">edit width</li>
+          <li id="editHeight" class="edit btn">edit height</li>
+          <li id="editColor" class="edit btn">edit color</li>
+        </ul>
+        </div>
+        <div id="container">
+        <ul class="clearfix">
+          <li id="1" class="item">1</li>
+          <li id="2" class="item">2</li>
+          <li id="3" class="item">3</li>
+          <li id="4" class="item">4</li>
+          <li id="5" class="item">5</li>
+          <li id="6" class="item">6</li>
+          <li id="7" class="item">7</li>
+          <li id="8" class="item">8</li>
+          <li id="9" class="item">9</li>
+          <li id="10" class="item">10</li>
+        </ul>
+        </div>
+      </div>
+
+      </xmp>
+    </div>
+    <div id="wrap">
+      <div id="sample">
+        <div id="toolbar">
+        <ul class="clearfix">
+          <li id="editTitle" class="edit btn">edit title</li>
+          <li id="editWidth" class="edit btn">edit width</li>
+          <li id="editHeight" class="edit btn">edit height</li>
+          <li id="editColor" class="edit btn">edit color</li>
+        </ul>
+        </div>
+        <div id="container">
+        <ul class="clearfix">
+          <li id="1" class="item">1</li>
+          <li id="2" class="item">2</li>
+          <li id="3" class="item">3</li>
+          <li id="4" class="item">4</li>
+          <li id="5" class="item">5</li>
+          <li id="6" class="item">6</li>
+          <li id="7" class="item">7</li>
+          <li id="8" class="item">8</li>
+          <li id="9" class="item">9</li>
+          <li id="10" class="item">10</li>
+        </ul>
+        </div>
+      </div>
+      <div id="desc">
+        <p>this is a simpler simple. for my project i have to use nested switch in a function. 
+           and inside of the switch there are many functions and events. 
+           the function has to be fired at "selectable stop event" for capture how many elements are selected. </p>
+
+        <p>my problem is how to destory the previous function ( or maybe a obj? ) when the function is re-fired again? 
+           what i do now is "unbind" the "events" within the function when its finished. ( not shown on the example above, coz if i do so we won't be able to see how many times the functions is fired ) 
+           but i think by doing that the old function is still exist in the memory? </p>
+
+        <p>from the sample above after we select the items and clilck the edit title btn ( or any other edit btn ).
+           it shows a msg box and after we click yes it fires a alert to let us now the edit btn click event is fired and hide the msg box.
+           now when we do this one more time, we will have the alert 2 times.
+           as we do it more and more again, the alerts get more as well.
+           which mean the previous functions still exist in the memory.</p>
+
+        <p>i don't know how i can detory them, i've try to set the function to null, but functions inside the function still exist.</p>
+      </div>
+    </div>
+    <div id="msg">
+      <div id="overlay"></div>
+      <div id="box">
+        <p>
+          <label class="boxTitle"></label>
+          <input type="text" value=""/>
+        </p>
+        <p>
+          <a class="yes btn">yes</a>
+          <a class="no btn">no</a>
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

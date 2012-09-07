@@ -1,0 +1,367 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Hyper Cache 2.8.7 繁體中文語系\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-01-26 18:30+0800\n"
+"PO-Revision-Date: 2012-01-26 19:16+0800\n"
+"Last-Translator: \n"
+"Language-Team: 殺氣の迷惘︱shachi.tw <shachitw@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __ngettext:1,2;__;_e;_\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=n==1?0:1;\n"
+"X-Poedit-Language: Chinese\n"
+"X-Poedit-Country: TAIWAN\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: options.php:92
+msgid "You must add to the file wp-config.php (at its beginning after the &lt;?php) the line of code: <code>define('WP_CACHE', true);</code>."
+msgstr "若要使用快取，你必須在「wp-config.php」檔案裡面新增這段程式碼：<code>define('WP_CACHE', true);</code>"
+
+#: options.php:103
+msgid "<p><strong>Options saved BUT not active because Hyper Cache was not able to update the file wp-content/advanced-cache.php (is it writable?).</strong></p>"
+msgstr "<p><strong>設定的選項已儲存但是無法正確啟用，因為 Hyper Cache 無法讀取到「wp-content/advanced-cache.php」這檔案（檔案是否有設定足夠的權限？）。</strong></p>"
+
+#: options.php:109
+msgid "<p><strong>Hyper Cache was not able to create the folder \"wp-content/cache/hyper-cache\". Make it manually setting permissions to 777.</strong></p>"
+msgstr "<p><strong>Hyper Cache 無法在「wp-content」底下建立「cache/hyper-cache」資料夾。請將「wp-content」設定權限 777。</strong></p>"
+
+#: options.php:114
+#, php-format
+msgid "You can find more details about configurations and working mode on <a href=\"%s\">Hyper Cache official page</a>."
+msgstr "此外掛Hyper-Cache的繁體中文語系檔是由<a href=\"http://shachi.tw\" target=\"_blank\">殺氣</a>翻譯而成。<p>如需Hyper-Cache設定教學請參考<a href=\"http://shachi.tw/hyper-cache/\" target=\"_blank\">http://shachi.tw/hyper-cache/</a><p>你可以在<a href=\"%s\">Hyper Cache official page</a>找到更多的細節配置和工作模式。"
+
+#: options.php:123
+msgid "Clear cache"
+msgstr "清除快取"
+
+#: options.php:126
+msgid "Cache status"
+msgstr "快取狀態"
+
+#: options.php:129
+msgid "Files in cache (valid and expired)"
+msgstr "快取的檔案數(有效加過期)"
+
+#: options.php:133
+msgid "Cleaning process"
+msgstr "刪除時間"
+
+#: options.php:135
+msgid "Next run on: "
+msgstr "下次刪除於："
+
+#: options.php:142
+msgid "The cleaning process runs hourly and it's ok to run it hourly: that grant you an efficient cache. If above there is not a valid next run time, wait 10 seconds and reenter this panel. If nothing change, try to deactivate and reactivate Hyper Cache."
+msgstr "每小時清除舊快取一次，讓您每小時保持有效的快取。如果上面運行時間已到但仍未刪除快取，請等待10秒，重新進入這個頁面。如果沒有改變，嘗試停用並重新啟用Hyper Cache。"
+
+#: options.php:149
+msgid "Configuration"
+msgstr "配置"
+
+#: options.php:154
+msgid "Cached pages timeout"
+msgstr "快取頁面過期時間"
+
+#: options.php:157
+msgid "minutes"
+msgstr "分鐘"
+
+#: options.php:159
+msgid "Minutes a cached page is valid and served to users. A zero value means a cached page is valid forever."
+msgstr "快取頁面有效的時間。0表示永遠有效，"
+
+#: options.php:160
+msgid "If a cached page is older than specified value (expired) it is no more used and will be regenerated on next request of it."
+msgstr "如果快取頁面存在時間比限制值大(過期)會不再使用，將重新產生新的快取。"
+
+#: options.php:161
+msgid "720 minutes is half a day, 1440 is a full day and so on."
+msgstr "720是半天；1440是一天。"
+
+#: options.php:167
+msgid "Cache invalidation mode"
+msgstr "做什麼動作也會讓快取無效"
+
+#: options.php:170
+msgid "All cached pages"
+msgstr "只要有修改"
+
+#: options.php:171
+msgid "Only modified posts"
+msgstr "只有修改文章"
+
+#: options.php:172
+msgid "Only modified pages"
+msgstr "只有修改分頁"
+
+#: options.php:173
+msgid "Nothing"
+msgstr "永遠不會"
+
+#: options.php:177
+msgid "Invalidate home, archives, categories on single post invalidation"
+msgstr "快取無效時，首頁、彙整、分類的快取也會一起失效。"
+
+#: options.php:180
+msgid "\"Invalidation\" is the process of deleting cached pages when they are no more valid."
+msgstr "在\"無效\"後所刪除的快取頁面都不再有效。"
+
+#: options.php:181
+msgid "Invalidation process is started when blog contents are modified (new post, post update, new comment,...) so one or more cached pages need to be refreshed to get that new content."
+msgstr "在部落格有更動時（新文章、更新文章、新迴響...等）快取將失效，因為快取頁面需要更新才能看到最新的內容。"
+
+#: options.php:182
+msgid "A new comment submission or a comment moderation is considered like a post modification where the post is the one the comment is relative to."
+msgstr "新迴響或修改迴響或通過審核的迴響也算其中之一。"
+
+#: options.php:188
+msgid "Disable cache for commenters"
+msgstr "迴響快取"
+
+#: options.php:192
+msgid "When users leave comments, WordPress show pages with their comments even if in moderation (and not visible to others) and pre-fills the comment form."
+msgstr "當啟用此功能時，用戶提交迴響或修改迴響（即使是還在審核中），也將視同修改文章一樣重新產生快取，讓用戶的迴響直接顯示在網頁上。"
+
+#: options.php:193
+msgid "If you want to keep those features, enable this option."
+msgstr "如果你啟用此功能，"
+
+#: options.php:194
+msgid "The caching system will be less efficient but the blog more usable."
+msgstr "雖然快取的效率會降低，但會使部落格更加有互動感。"
+
+#: options.php:201
+msgid "Feeds caching"
+msgstr "RSS快取"
+
+#: options.php:205
+msgid "When enabled the blog feeds will be cache as well."
+msgstr "當啟用後，部落格的RSS訂閱將產生快取。"
+
+#: options.php:206
+msgid "Usually this options has to be left unchecked but if your blog is rather static, you can enable it and have a bit more efficiency"
+msgstr "通常RSS訂閱頁是要定期更新，因此不須啟用。除非你的網站是靜態頁面，那你可以啟用它讓網頁更有效率。"
+
+#: options.php:212
+#: options.php:249
+#: options.php:289
+#: options.php:435
+msgid "Update"
+msgstr "更新"
+
+#: options.php:215
+msgid "Configuration for mobile devices"
+msgstr "行動裝置設定"
+
+#: options.php:218
+#, fuzzy
+msgid "WordPress Mobile Pack"
+msgstr "WordPress行動裝置包"
+
+#: options.php:222
+msgid "Enbale integration with <a href=\"http://wordpress.org/extend/plugins/wordpress-mobile-pack/\">WordPress Mobile Pack</a> plugin. If you have that plugin, Hyper Cache use it to detect mobile devices and caches saparately the different pages generated."
+msgstr "開啟後整合<a href=\"http://wordpress.org/extend/plugins/wordpress-mobile-pack/\">WordPress Mobile Pack</a>外掛。"
+
+#: options.php:227
+msgid "Detect mobile devices"
+msgstr "自動檢測行動裝置"
+
+#: options.php:231
+msgid "When enabled mobile devices will be detected and the cached page stored under different name."
+msgstr "當啟用後，將自動偵測行動裝置品牌並將快取頁面存到不同的名稱底下，"
+
+#: options.php:232
+msgid "This makes blogs with different themes for mobile devices to work correctly."
+msgstr "使得部落格在不同廠牌的行動裝置也能順利訪問、觀看。"
+
+#: options.php:238
+msgid "Mobile agent list"
+msgstr "行動裝置清單"
+
+#: options.php:242
+msgid "One per line mobile agents to check for when a page is requested."
+msgstr "網頁被訪問時，會逐一比對每行輸入的行動裝置廠牌名稱，"
+
+#: options.php:243
+msgid "The mobile agent string is matched against the agent a device is sending to the server."
+msgstr "當找到和使用者的行動裝置廠牌一樣時，將會直接發送快取到行動裝置。"
+
+#: options.php:253
+msgid "Compression"
+msgstr "壓縮設定"
+
+#: options.php:257
+msgid "Your hosting space has not the \"gzencode\" or \"gzinflate\" function, so no compression options are available."
+msgstr ""
+
+#: options.php:263
+msgid "Enable compression"
+msgstr "啟用Gzip壓縮"
+
+#: options.php:267
+msgid "When possible the page will be sent compressed to save bandwidth."
+msgstr "當開啟後，訪問網站時將會Gzip壓縮頁面，以節省流量。"
+
+#: options.php:268
+msgid "Only the textual part of a page can be compressed, not images, so a photo blog will consume a lot of bandwidth even with compression enabled."
+msgstr "即使啟用Gzip壓縮，也只有文字頁面能被壓縮，而不是圖片，所以圖片的部落格將會消耗大量流量。"
+
+#: options.php:269
+#: options.php:283
+msgid "Leave the options disabled if you note malfunctions, like blank pages."
+msgstr "如果有故障網頁（如空白頁），可能會無法順利運作。"
+
+#: options.php:271
+msgid "If you enable this option, the option below will be enabled as well."
+msgstr "如果你啟用此功能，將使訪問網站速度變更好。"
+
+#: options.php:277
+msgid "Disk space usage"
+msgstr "空間使用情況"
+
+#: options.php:281
+msgid "Enable this option to minimize disk space usage."
+msgstr "啟用此功能，以最大限度地減少空間的使用情況，"
+
+#: options.php:282
+msgid "The cache will be a little less performant."
+msgstr "但會稍微減少快取的性能。"
+
+#: options.php:294
+msgid "Advanced options"
+msgstr "高級選項"
+
+#: options.php:298
+msgid "Translation"
+msgstr "翻譯"
+
+#: options.php:302
+msgid "DO NOT show this panel translated."
+msgstr "不要使用翻譯檔來翻譯此頁，默認不打勾（啟用翻譯）。"
+
+#: options.php:308
+msgid "Disable Last-Modified header"
+msgstr "禁用HTTP 的標頭（Last-Modified）"
+
+#: options.php:312
+msgid "Disable some HTTP headers (Last-Modified) which improve performances but some one is reporting they create problems which some hosting configurations."
+msgstr "藉由停用一些 HTTP 的標頭(Last-Modified) 可以增進效能，但有些人回報說停用後會因為主機商的設定而導致問題發生，默認不打勾（不禁用）。"
+
+#: options.php:318
+msgid "Home caching"
+msgstr "首頁快取"
+
+#: options.php:322
+msgid "DO NOT cache the home page so it is always fresh."
+msgstr "不讓首頁產生快取，保持首頁隨時最新，默認不打勾（產生快取）。"
+
+#: options.php:328
+msgid "Redirect caching"
+msgstr "快取重定向"
+
+#: options.php:332
+msgid "Cache WordPress redirects."
+msgstr "WordPress遇到重定向時，"
+
+#: options.php:333
+msgid "WordPress sometime sends back redirects that can be cached to avoid further processing time."
+msgstr "可以直接使用快取，避免再一次讀取資料庫、增加處理時間。"
+
+#: options.php:338
+msgid "Page not found caching (HTTP 404)"
+msgstr "「找不到網頁（404錯誤）」快取"
+
+#: options.php:345
+msgid "Strip query string"
+msgstr "刪除查詢字串"
+
+#: options.php:349
+msgid "This is a really special case, usually you have to kept it disabled. When enabled, URL with query string will be reduced removing the query string. So the URL http://www.domain.com/post-title and http://www.domain.com/post-title?a=b&c=d are cached as a single page."
+msgstr "這是一個非常特殊的情況，通常你要保持它禁用。啟用後，網址帶字串的網址將去除查詢字串。 因此，網址 http://www.domain.com/post-title和http://www.domain.com/post-title?a=b&c=d的快取將視為同一頁面。"
+
+#: options.php:350
+msgid "Setting this option disable the next one."
+msgstr "啟用後下一項就會自動啟用。"
+
+#: options.php:352
+msgid "Many plugins can stop to work correctly with this option enabled (eg. my <a href=\"http://www.satollo.net/plugins/newsletter\">Newsletter plugin</a>)"
+msgstr "許多外掛會因為啟用它而停止運作（例如：我的通訊外掛-<a href=\"http://www.satollo.net/plugins/newsletter\">newsletter</a> ）。"
+
+#: options.php:358
+msgid "URL with parameters"
+msgstr "帶字串的網址"
+
+#: options.php:362
+msgid "Cache requests with query string (parameters)."
+msgstr "快取附有查詢字串(參數)的請求。"
+
+#: options.php:363
+msgid "This option has to be enabled for blogs which have post URLs with a question mark on them."
+msgstr "對於那些文章網址後面有附帶問號的部落格，啟用這個選項是必要的。"
+
+#: options.php:364
+msgid "This option is disabled by default because there is plugins which use URL parameter to perform specific action that cannot be cached"
+msgstr "這個選項被預設禁用的原因，是因為有一些外掛會用網址參數執行一些不能被快取的動作。"
+
+#: options.php:365
+msgid "For who is using search engines friendly permalink format is safe to leave this option disabled, no performances will be lost."
+msgstr "至於有使用固定網址的人來說，禁用這個項目是OK的，不會影響效能及功能。"
+
+#: options.php:372
+msgid "Filters"
+msgstr "過濾"
+
+#: options.php:374
+msgid "Here you can: exclude pages and posts from the cache, specifying their address (URI); disable Hyper Cache for specific User Agents (browsers, bot, mobile devices, ...); disable the cache for users that have specific cookies."
+msgstr "在這裡您可以：禁用快取從指定網址（URI）、網頁連結訪問；禁用快取對特定用戶（瀏覽器，機器人，行動裝置...等）；禁用快取對用戶具有特定的Cookie名稱。"
+
+#: options.php:378
+msgid "URI to reject"
+msgstr "拒絕快取的網址"
+
+#: options.php:382
+msgid "Write one URI per line, each URI has to start with a slash."
+msgstr "每行寫一個網址，每個網址的開頭必須用斜線。"
+
+#: options.php:383
+msgid "A specified URI will match the requested URI if the latter starts with the former."
+msgstr "如果被請求的網址是以被指定的網址作為開頭；"
+
+#: options.php:384
+msgid "If you want to specify a stric matching, surround the URI with double quotes."
+msgstr "如果你想指定一個比較嚴謹的對應原則，請用雙引號把網址包住。"
+
+#: options.php:404
+msgid "Agents to reject"
+msgstr "拒絕快取的代理站"
+
+#: options.php:408
+msgid "Write one agent per line."
+msgstr "每行寫一個拒絕快取代理網站的網址。"
+
+#: options.php:409
+msgid "A specified agent will match the client agent if the latter contains the former. The matching is case insensitive."
+msgstr "如果用戶端的 User-Agent (用戶代理) 能對應到所指定的代理，就會禁止產生快取 。這個對應原則是不區分大小寫的。"
+
+#: options.php:415
+msgid "Cookies matching"
+msgstr "拒絕快取的Cookies"
+
+#: options.php:419
+msgid "Write one cookie name per line."
+msgstr "每行寫一個 cookie的名稱。 "
+
+#: options.php:420
+msgid "When a specified cookie will match one of the cookie names sent bby the client the cache stops."
+msgstr "當用戶送出的 Cookie 名稱對應到指定的 Cookie 名稱時，快取就會停止作用。"
+
+#: options.php:423
+msgid ""
+"It seems you have Facebook Connect plugin installed. Add this cookie name to make it works\n"
+"        with Hyper Cache:"
+msgstr ""
+

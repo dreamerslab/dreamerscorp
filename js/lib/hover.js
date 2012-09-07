@@ -1,0 +1,1 @@
+(function(a){a.fn.hover_class=function(b){return this.each(function(){var c=a(this);c.hover(function(){c.addClass(b)},function(){c.removeClass(b)})})}})(jQuery)

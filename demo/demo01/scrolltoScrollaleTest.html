@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>scrollTo, scrollable TEST</title>
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+    <script type="text/javascript">google.load("jquery", "1.3.2");google.load("jqueryui", "1.7.1");</script>  
+    <script type="text/javascript" src="js/jqueryScrollTo.js"></script> 
+    <script type="text/javascript" src="js/jqueryMouseWheel.js"></script>
+    <script type="text/javascript" src="js/jqueryScrollable.js"></script>
+    <script>
+    $(document).ready(function(){	
+      $("div.scrollable").scrollable();
+      $(".goTop").click(function(){
+        $.scrollTo($("#wrap"),1200);
+      });
+      $(".go1").click(function(){
+        $.scrollTo($("#block1"),1200);
+      });
+      $(".go2").click(function(){
+        $.scrollTo($("#block2"),1200);
+      });
+      $(".go3").click(function(){
+        $.scrollTo($("#block3"),1200);
+      });
+      $(".go4").click(function(){
+        $.scrollTo($("#block4"),1200);
+      });      
+    })
+    </script>
+<!-- scrollable styling -->
+    <link rel="stylesheet" type="text/css" href="css/scrollable-minimal.css">
+    <link rel="stylesheet" type="text/css" href="css/scrollable-navig.css">   
+<!-- end scrollable styling -->  
+    <style>
+    .clearfix:after {
+      content: ".";
+      display: block;
+      height: 0;
+      clear: both;
+      visibility: hidden;
+    }
+    
+    /* Hides from IE-mac \*/
+    * html .clearfix {
+      height: 1%;
+    }
+    
+    .clearfix {
+      display: block;
+    }
+    /* End hide from IE-mac */ 
+    
+    
+    #wrap{
+      margin:0 auto;
+      width:750px;
+    }
+    .scrollableBlock{
+    margin:20px 0 0;
+    }
+    .block{
+    	width:740px;
+    	height:500px;
+    	border:5px dashed #669900;
+    	margin:20px 0;
+    }
+    .scrollToBlock{
+      margin:30px 20px 0;
+      width:500px;      
+    }
+    .scrollToBlock a{
+      display:block;
+      font-weight:bolder;
+      color:#cccccc;
+      cursor:pointer;
+    }
+    </style>   	    
+  </head>
+  <body>
+    <div id="wrap"> 
+<!-- block1 -->     
+      <div id="block1" class="clearfix block">  
+        <div class="scrollableBlock clearfix"> 
+          <!-- navigator --> 
+          <div class="navi"></div> 
+          <!-- end navigator --> 
+          <!-- prev link --> 
+          <a class="prev"></a> 
+          <!-- end prev link --> 
+          <!-- root element for scrollable --> 
+          <div class="scrollable">        
+              <!-- root element for the items --> 
+              <div class="items"> 
+                  <div>0</div>  <div>1</div>  <div>2</div>  <div>3</div>  <div>4</div>  
+                  <div>5</div>  <div>6</div>  <div>7</div>  <div>8</div>  <div>9</div>  
+                  <div>10</div> <div>11</div> <div>12</div> <div>13</div> <div>14</div> 
+              </div> 
+              <!-- end root element for the items -->  
+          </div> 
+          <!-- end root element for scrollable -->
+          <!-- next link --> 
+          <a class="next"></a>
+          <!-- end next link -->
+        </div>  
+        <!-- scrollTo block -->
+        <div class="scrollToBlock">
+          <a class="goTop">go to top</a>
+          <a class="go2">go to block 2</a>
+          <a class="go3">go to block 3</a>
+          <a class="go4">go to block 4</a>        
+        </div>
+        <!-- end scrollTo block -->
+      </div>
+<!-- end block1 -->      
+<!-- block2 -->       
+      <div id="block2" class="clearfix block">
+        <div class="scrollableBlock clearfix">    
+          <div class="navi"></div> 
+          <a class="prev"></a> 
+          <div class="scrollable"> 
+            <div class="items"> 
+              <div>0</div>  <div>1</div>  <div>2</div>  <div>3</div>  <div>4</div>  
+              <div>5</div>  <div>6</div>  <div>7</div>  <div>8</div>  <div>9</div>  
+              <div>10</div> <div>11</div> <div>12</div> <div>13</div> <div>14</div> 
+            </div> 
+          </div> 
+          <a class="next"></a>
+        </div>  
+        <div class="scrollToBlock">
+          <a class="goTop">go to top</a>
+          <a class="go1">go to block 1</a>
+          <a class="go3">go to block 3</a>
+          <a class="go4">go to block 4</a>        
+        </div>        
+      </div>
+<!-- end block2 -->      
+<!-- block3 -->      
+      <div id="block3" class="clearfix block">   
+        <div class="scrollableBlock clearfix"> 
+          <div class="navi"></div>  
+          <a class="prev"></a>  
+          <div class="scrollable">  
+            <div class="items"> 
+              <div>0</div>  <div>1</div>  <div>2</div>  <div>3</div>  <div>4</div>  
+              <div>5</div>  <div>6</div>  <div>7</div>  <div>8</div>  <div>9</div>  
+              <div>10</div> <div>11</div> <div>12</div> <div>13</div> <div>14</div> 
+            </div>              
+          </div> 
+          <a class="next"></a>
+        </div>  
+        <div class="scrollToBlock">
+          <a class="goTop">go to top</a>
+          <a class="go1">go to block 1</a>
+          <a class="go2">go to block 2</a>
+          <a class="go4">go to block 4</a>        
+        </div> 
+      </div>
+<!-- end block3 -->    
+<!-- block4 -->       
+      <div id="block4" class="clearfix block">   
+        <div class="scrollableBlock clearfix"> 
+          <div class="navi"></div>  
+          <a class="prev"></a> 
+          <div class="scrollable">  
+            <div class="items"> 
+              <div>0</div>  <div>1</div>  <div>2</div>  <div>3</div>  <div>4</div>  
+              <div>5</div>  <div>6</div>  <div>7</div>  <div>8</div>  <div>9</div>  
+              <div>10</div> <div>11</div> <div>12</div> <div>13</div> <div>14</div> 
+            </div>             
+          </div> 
+          <a class="next"></a>
+        </div>  
+        <div class="scrollToBlock">
+          <a class="goTop">go to top</a>
+          <a class="go1">go to block 1</a>
+          <a class="go2">go to block 2</a>
+          <a class="go3">go to block 3</a>        
+        </div> 
+      </div> 
+<!-- end block4 -->             
+    </div>   
+  </body>  
+</html>

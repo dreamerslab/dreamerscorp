@@ -1,0 +1,20 @@
+.DS_Store
+
+# hyper-cache
+# blog/wp-content/advanced-cache.php
+blog/wp-content/plugins/hyper-cache/cache/*
+blog/wp-content/cache/*
+
+# db cache reload
+# blog/wp-content/db-config.ini
+# blog/wp-content/db.php
+blog/wp-content/tmp/*
+
+blog/wp-content/plugins/all-in-one-seo-pack/all_in_one_seo_pack.log
+
+# logs
+logs/access.log
+logs/errors.log
+
+# configs
+blog/wp-config.php

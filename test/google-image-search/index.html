@@ -1,0 +1,247 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Google Image Search Alignment Sample</title>
+    <style type="text/css">
+      body{
+        line-height: 1;
+      }
+      body, a, img{
+        border: 0;
+        margin: 0;
+        padding: 0;
+      }
+      #overlay{
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: white;
+        z-index: 1000;
+      }
+      #wrap{
+        margin: 20px auto;
+      }
+      .img-wrap{
+        float: left;
+        display: inline;
+        margin: 0 12px 12px 0;
+        overflow: hidden;
+        vertical-align: top;
+      }
+      .img-wrap a{
+        display: block;
+      }
+      .img-wrap a:hover img{
+        opacity: 0.6;
+        -moz-opacity: 0.6;
+        /* ie6 */
+        _filter: alpha(opacity=60) !important;
+      }
+      .clearfix:after{
+        content: ".";
+        display: block;
+        height: 0;
+        clear: both;
+        visibility: hidden;
+      }
+      .clearfix{
+        display: inline-block;
+      }
+      * html .clearfix{
+        height: 1%;
+      }
+      .clearfix{
+        display: block;
+      }
+    </style>  
+  </head>
+  <body>    
+    <div id="overlay"></div>    
+    <div id="wrap" class="clearfix"></div>
+  <!-- local -->
+  <!-- <script type="text/javascript" src="https://www.google.com/jsapi?key=ABQIAAAAMhcsKdGbN7wyzIW9iO-Q9BQTZCizKq1GC5Y2wSW4KaSaAD3qQxRwuqSVrHgEuCmXbDY7R8m93bjErQ"></script> -->
+  <!-- www -->
+  <script type="text/javascript" src="https://www.google.com/jsapi?key=ABQIAAAAMhcsKdGbN7wyzIW9iO-Q9BR1p-jxlQxlzuvWpe2GoztAsaLzWxRv01EB9OWeF68zHRPAITvn_w8ofQ"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
+  <script type="text/javascript">
+    // if browser does not support console, make them empty function so that the script can keep running
+    ( function( window ){
+      if( !( 'console' in window ) || !( 'firebug' in console )){
+        var methods = [ 'log', 'debug', 'info', 'warn', 'error', 
+        'assert', 'dir', 'dirxml', 'group', 'groupEnd', 'time', 
+        'timeEnd', 'count', 'trace', 'profile', 'profileEnd' ],
+        i = methods.length;
+        window.console = {};
+        for( ; i--; ) window.console[ methods[ i ]] = function(){};
+      }      
+    })( window );   
+    // load google search lib
+    google.load( 'search', '1' );
+    // wrap args and func in a closure
+    ( function( w, g, $ ){
+      // cache widnow obj
+      var $w = $( w ),
+      windowWidth, rowWidth, rowHeight, widths,
+      rowInfo, rowItems,
+      // google is very G8, it only gives u the first 8 pages,
+      // and each pages contains only 8 search result,
+      // which means 8*8 = 64 imgs in total...
+      // yeah... perfectly for making a demo
+      rowCounter, pageCounter,
+      // tmp container for imgs to be append to DOM
+      imgs,
+      // reset all args
+      reset = function(){
+        // offset 50 to make it looks nicer
+        windowWidth = $w.width() - 50,
+        widths = [];
+        rowWidth = 0;
+        rowHeight = 1000;
+        rowInfo = [];
+        rowItems = 0;
+        rowCounter = 0;
+        pageCounter = 0;
+        imgs = '';
+        // hide content and empty the imgs
+        $( '#overlay' ).fadeIn( 200, function(){
+          $( '#wrap' ).empty();
+        });
+      },
+      // set search options
+      search = function( keyowrd, controller, afterSearch ){
+        // google only gives 8 results max per request
+        controller.setResultSetSize( 8 );
+        controller.setSearchCompleteCallback( this, afterSearch, [ controller ] );
+        controller.execute( keyowrd );
+      },
+      // build DOM
+      // this func will be call from within itself by google api .gotoPage()
+      build = function( controller ){
+        // track build time
+        console.time( 'build' );
+        // loop through each search result
+        // calculate and record results
+        $.each( controller.results, function( key, val ){
+          // current thumbnail width
+          var currentWidth = parseInt( val.tbWidth ),
+          // current thumbnail height
+          currentHeight = parseInt( val.tbHeight ),
+          // add 12 for wrapper margin-right
+          imgWrapWidth = currentWidth + 12;
+
+          rowWidth = rowWidth + imgWrapWidth;
+          // get the smallest height
+          if( currentHeight < rowHeight ) rowHeight = currentHeight;
+          // this statement determine how many imgs in a row
+          if( rowWidth > windowWidth ){
+            // record the info for later calculating
+            rowInfo.push({
+              // width of imgs in a row
+              widths : widths,
+              // row width, we minus imgWrapWidth
+              // because we add it to see if the row width
+              // is greater than window width
+              width : rowWidth - imgWrapWidth,
+              height : rowHeight,
+              // how many imgs in a row
+              items : rowItems
+            });
+            rowCounter++;
+            // reset
+            rowWidth = imgWrapWidth;
+            rowHeight = currentHeight;
+            // not empty array, we have to record currnet img info
+            widths = [ currentWidth ];
+            // no 0, we have already add 1 item in this statement
+            rowItems = 1;
+          }else{
+            widths.push( currentWidth );
+            rowItems++;
+          }
+
+          imgs = imgs + '<div class="img-wrap row-' + rowCounter + '">' +
+          '<a title="' + val.titleNoFormatting + '" href="' + val.unescapedUrl + '">' +
+          '<img src="' + val.tbUrl +'"/>' +
+          '</a>' +
+          '</div>';
+        });
+
+        pageCounter++;
+        // ask for the next page data
+        controller.gotoPage( pageCounter );
+        // only append to DOM with the last query
+        if( pageCounter === 8 ){
+          $( '#wrap' ).width( windowWidth ).append( imgs );
+          beautify( rowInfo );
+          // when ready show to user
+          $( '#overlay' ).fadeOut( 300 );
+          // in my test build end up with around 700ms in FF.
+          // it's mainly because it took 8 ajax to build "one" page
+          // if i can use 1 query this should be much faster
+          console.timeEnd( 'build' );
+        }
+      },
+      // google do the alignment at server
+      beautify = function( rows ){
+        var last_row = 0;
+        // each row
+        $.each( rows ,function( key, val ){
+          var diff = windowWidth - val.width + 12,
+          extra = Math.floor( diff / val.items ),
+          // the gap that Math.floor produced
+          gap = diff - ( extra * val.items ),
+          width = 0;
+          // each img in a row
+          $( '.row-' + key ).each( function( i ){
+            // record width to parent scope to find the last img width
+            width = val.widths[ i ] + extra;
+            $( this ).find( 'img' ).width( width );
+          }).height( val.height ).
+          // clear margin-right for every last row element
+          last().css( 'margin-right' , 0 ).
+          // fill the gap for last img
+          find( 'img' ).width( width + gap );
+          // record the last row number
+          last_row++;
+        });
+        // usually the last row contains not enough imgs, so we hide it
+        $( '.row-' + last_row ).hide();
+      },
+      execute = function( keyword ){
+        var searcher = new g.search.ImageSearch();
+        reset();
+        search( keyword, searcher, build );
+      };
+      // doc ready func, where the sandbox is
+      $( function(){
+        var keywords = [ 'reef', 'surf', 'hawaii',
+        'kitten', 'puppy', 'tiger',
+        'austin mini', 'shelby cobra', 'lotus elise',
+        // ya!!! hotties :3
+        'Scarlett Johansson', 'Monica bellucci', 'Penelope Cruz' ],
+        // remember always to cache it outside the loop
+        // it helps when loopping throught a large array
+        i = keywords.length,
+        // not 0, we manually execute it at the beginning
+        counter = 1;
+        // init load
+        execute( keywords[ 0 ]);
+        // switch search result every 7 sec
+        setInterval( function(){
+          // reset counter
+          if( counter >= i ) counter = 0;
+          execute( keywords[ counter ]);
+          counter++;
+        }, 7000 );
+      });
+
+    })( window, google, jQuery ); 
+    
+  </script>  
+  </body>
+</html>
+
+

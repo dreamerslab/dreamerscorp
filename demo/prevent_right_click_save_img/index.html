@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Prevent right click save image</title>
+  </head>
+	<style>
+	a, img{
+		padding: 0;
+		border: 0;
+	}	
+	body{
+		margin: auto;
+		padding: 0;
+		width: 900px;
+		font-family: verdana;
+		font-size: 13px;
+	}
+  .img_wrap{
+		position: relative;
+		width: 75px;
+		height: 75px;
+  }
+  .blocker{
+    position: absolute;
+		width: 100%;
+		height: 100%;
+		z-index: 5;
+  }
+  </style>
+  <body>  
+		<div id="wrap">
+			<h1>Prevent right click save image</h1>
+			<div>
+				<h2>Not Protected</h2>
+				<a href='http://farm4.static.flickr.com/3362/3252938723_64c586a31e.jpg' >
+					<img src="http://farm4.static.flickr.com/3362/3252938723_64c586a31e_s.jpg" />
+				</a>				
+			</div>
+			<div>
+				<h2>Protected</h2>
+				<a href='http://farm4.static.flickr.com/3362/3252938723_64c586a31e.jpg' >
+				  <div class='img_wrap'> <!-- add this -->
+					  <img class='blocker' src="space.gif" /> <!-- add this -->
+						<img src="http://farm4.static.flickr.com/3362/3252938723_64c586a31e_s.jpg" />
+					</div> <!-- add this -->
+				</a>				
+			</div>			
+		</div>				
+  </body>
+</html>

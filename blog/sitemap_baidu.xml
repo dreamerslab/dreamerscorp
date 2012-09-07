@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<document xmlns:bbs="http://www.baidu.com/search/bbs_sitemap.xsd">
+<!-- generator="wordpress/2.8.4" -->
+<!-- baidu-sitemap-generator-url="http://liucheng.name/" baidu-sitemap-generator-version="1.31" -->
+<!-- generated-on="2011-04-05 18:10:30" -->
+<webSite>http://dreamerscorp.com/blog</webSite>
+<webMaster>ben@dreamerscorp.com</webMaster>
+<updatePeri>24</updatePeri>
+<updatetime>2011-04-05 18:10:30</updatetime>
+<version>WordPress</version>
+<item>
+<link>http://dreamerscorp.com/blog/%e5%a6%82%e4%bd%95%e6%8a%8a-google-news-timeline-%e7%95%b6%e5%81%9a-rss-%e9%96%b1%e8%ae%80%e5%99%a8%e4%be%86%e7%94%a8/</link>
+<title>如何把 Google News Timeline 當做 RSS 閱讀器來用</title>
+<pubDate>2009-08-11 13:34:49</pubDate>
+<bbs:pick>0</bbs:pick>
+</item>
+<item>
+<link>http://dreamerscorp.com/blog/%e7%94%a8google-apps%e8%87%aa%e8%a8%82short-links/</link>
+<title>用Google Apps自訂Short Links</title>
+<pubDate>2009-08-10 13:31:58</pubDate>
+<bbs:pick>0</bbs:pick>
+</item>
+<item>
+<link>http://dreamerscorp.com/blog/%e4%bd%bf%e7%94%a8app-engine-patch%e7%99%bc%e6%8f%aedjango%e7%9a%84%e5%a8%81%e5%8a%9b%ef%bc%88%e4%b8%83%ef%bc%89/</link>
+<title>使用app-engine-patch發揮Django的威力（七）</title>
+<pubDate>2009-08-09 13:28:16</pubDate>
+<bbs:pick>0</bbs:pick>
+</item>
+<item>
+<link>http://dreamerscorp.com/blog/%e4%bd%bf%e7%94%a8app-engine-patch%e7%99%bc%e6%8f%aedjango%e7%9a%84%e5%a8%81%e5%8a%9b%ef%bc%88%e5%85%ad%ef%bc%89/</link>
+<title>使用app-engine-patch發揮Django的威力（六）</title>
+<pubDate>2009-08-08 13:26:28</pubDate>
+<bbs:pick>0</bbs:pick>
+</item>
+<item>
+<link>http://dreamerscorp.com/blog/%e4%bd%bf%e7%94%a8app-engine-patch%e7%99%bc%e6%8f%aedjango%e7%9a%84%e5%a8%81%e5%8a%9b%ef%bc%88%e4%ba%94%ef%bc%89/</link>
+<title>使用app-engine-patch發揮Django的威力（五）</title>
+<pubDate>2009-08-07 13:20:19</pubDate>
+<bbs:pick>0</bbs:pick>
+</item>
+<item>
+<link>http://dreamerscorp.com/blog/%e4%bd%bf%e7%94%a8app-engine-patch%e7%99%bc%e6%8f%aedjango%e7%9a%84%e5%a8%81%e5%8a%9b%ef%bc%88%e5%9b%9b%ef%bc%89/</link>
+<title>使用app-engine-patch發揮Django的威力（四）</title>
+<pubDate>2009-08-06 13:18:47</pubDate>
+<bbs:pick>0</bbs:pick>
+</item>
+<item>
+<link>http://dreamerscorp.com/blog/%e4%bd%bf%e7%94%a8app-engine-patch%e7%99%bc%e6%8f%aedjango%e7%9a%84%e5%a8%81%e5%8a%9b%ef%bc%88%e4%b8%89%ef%bc%89/</link>
+<title>使用app-engine-patch發揮Django的威力（三） </title>
+<pubDate>2009-08-05 13:16:38</pubDate>
+<bbs:pick>0</bbs:pick>
+</item>
+<item>
+<link>http://dreamerscorp.com/blog/%e4%bd%bf%e7%94%a8app-engine-patch%e7%99%bc%e6%8f%aedjango%e7%9a%84%e5%a8%81%e5%8a%9b%ef%bc%88%e4%ba%8c%ef%bc%89/</link>
+<title>使用app-engine-patch發揮Django的威力（二）</title>
+<pubDate>2009-08-04 13:14:49</pubDate>
+<bbs:pick>0</bbs:pick>
+</item>
+<item>
+<link>http://dreamerscorp.com/blog/%e4%bd%bf%e7%94%a8app-engine-patch%e7%99%bc%e6%8f%aedjango%e7%9a%84%e5%a8%81%e5%8a%9b%ef%bc%88%e4%b8%80%ef%bc%89/</link>
+<title>使用app-engine-patch發揮Django的威力（一） </title>
+<pubDate>2009-08-03 13:09:09</pubDate>
+<bbs:pick>0</bbs:pick>
+</item>
+<item>
+<link>http://dreamerscorp.com/blog/%e4%bb%80%e9%ba%bc%e6%98%af-google-app-engine%ef%bc%9f%ef%bc%88%e5%9b%9b%ef%bc%89/</link>
+<title>什麼是 Google App Engine？（四） </title>
+<pubDate>2009-08-02 13:01:34</pubDate>
+<bbs:pick>0</bbs:pick>
+</item>
+<item>
+<link>http://dreamerscorp.com/blog/%e4%bb%80%e9%ba%bc%e6%98%af-google-app-engine%ef%bc%9f%ef%bc%88%e4%b8%89%ef%bc%89/</link>
+<title>什麼是 Google App Engine？（三）</title>
+<pubDate>2009-08-01 12:57:32</pubDate>
+<bbs:pick>0</bbs:pick>
+</item>
+<item>
+<link>http://dreamerscorp.com/blog/%e4%bb%80%e9%ba%bc%e6%98%af-google-app-engine%ef%bc%9f%ef%bc%88%e4%ba%8c%ef%bc%89/</link>
+<title>什麼是 Google App Engine？（二）</title>
+<pubDate>2009-07-31 19:00:00</pubDate>
+<bbs:pick>0</bbs:pick>
+</item>
+<item>
+<link>http://dreamerscorp.com/blog/%e4%bb%80%e9%ba%bc%e6%98%af-google-app-engine%ef%bc%9f%ef%bc%88%e4%b8%80%ef%bc%89/</link>
+<title>什麼是 Google App Engine？（一）</title>
+<pubDate>2009-07-30 12:49:29</pubDate>
+<bbs:pick>0</bbs:pick>
+</item>
+<item>
+<link>http://dreamerscorp.com/blog/gmail%e9%80%b2%e9%9a%8e%e6%90%9c%e5%b0%8b/</link>
+<title>Gmail進階搜尋</title>
+<pubDate>2009-07-29 00:08:05</pubDate>
+<bbs:pick>0</bbs:pick>
+</item>
+<item>
+<link>http://dreamerscorp.com/blog/gmail%e5%88%86%e7%be%a4%ef%bc%9a%e6%98%9f%e6%a8%99%e3%80%81%e6%a8%99%e7%b1%a4%e3%80%81%e7%af%a9%e9%81%b8%e3%80%81%e5%b0%81%e5%ad%98%e5%92%8c%e6%bb%91%e9%bc%a0%e6%8b%96%e6%9b%b3/</link>
+<title>Gmail分群：星標、標籤、篩選、封存和滑鼠拖曳</title>
+<pubDate>2009-07-28 23:51:16</pubDate>
+<bbs:pick>0</bbs:pick>
+</item>
+<item>
+<link>http://dreamerscorp.com/blog/gmail-labs%ef%bc%9a%e8%87%aa%e8%a8%82%e5%81%b4%e9%82%8a%e6%ac%84widget/</link>
+<title>Gmail Labs：自訂側邊欄Widget </title>
+<pubDate>2009-07-27 10:46:48</pubDate>
+<bbs:pick>0</bbs:pick>
+</item>
+<item>
+<link>http://dreamerscorp.com/blog/gmail%e5%b7%a5%e4%bd%9c%e8%a1%a8/</link>
+<title>Gmail工作表 </title>
+<pubDate>2009-07-26 23:49:06</pubDate>
+<bbs:pick>0</bbs:pick>
+</item>
+<item>
+<link>http://dreamerscorp.com/blog/%e7%94%a8thunderbird%e5%82%99%e4%bb%bdgmail%e4%b8%ad%e7%9a%84%e9%83%b5%e4%bb%b6/</link>
+<title>用Thunderbird備份Gmail中的郵件</title>
+<pubDate>2009-07-25 12:42:33</pubDate>
+<bbs:pick>0</bbs:pick>
+</item>
+<item>
+<link>http://dreamerscorp.com/blog/gmail%e6%88%90%e5%8a%9f%e7%9a%84%e8%83%8c%e5%be%8c/</link>
+<title>Gmail成功的背後</title>
+<pubDate>2009-07-24 23:44:28</pubDate>
+<bbs:pick>0</bbs:pick>
+</item>
+<item>
+<link>http://dreamerscorp.com/blog/12%e5%80%8b%e8%bd%89%e7%94%a8gmail%e7%9a%84%e7%90%86%e7%94%b1/</link>
+<title>12個轉用Gmail的理由</title>
+<pubDate>2009-07-23 23:40:36</pubDate>
+<bbs:pick>0</bbs:pick>
+</item>
+<item>
+<link>http://dreamerscorp.com/blog/gmail%e7%9a%8411%e5%80%8b%e6%9c%89%e5%8a%9b%e7%a7%98%e8%a8%a3%ef%bc%88%e4%b8%8b%ef%bc%89/</link>
+<title>Gmail的11個有力秘訣（下）</title>
+<pubDate>2009-07-22 23:33:50</pubDate>
+<bbs:pick>0</bbs:pick>
+</item>
+<item>
+<link>http://dreamerscorp.com/blog/gmail%e7%9a%8411%e5%80%8b%e6%9c%89%e5%8a%9b%e7%a7%98%e8%a8%a3%ef%bc%88%e4%b8%8a%ef%bc%89/</link>
+<title>Gmail的11個有力秘訣（上）</title>
+<pubDate>2009-07-21 23:32:01</pubDate>
+<bbs:pick>0</bbs:pick>
+</item>
+<item>
+<link>http://dreamerscorp.com/blog/%e5%a6%82%e4%bd%95%e7%94%a8outlook%e5%90%8c%e6%ad%a5%e6%94%b6%e7%99%bcgmail%e9%83%b5%e4%bb%b6%ef%bc%9f%ef%bc%88%e4%b8%89%ef%bc%89/</link>
+<title>如何用Outlook同步收發Gmail郵件？（三）</title>
+<pubDate>2009-07-20 23:29:48</pubDate>
+<bbs:pick>0</bbs:pick>
+</item>
+<item>
+<link>http://dreamerscorp.com/blog/%e5%a6%82%e4%bd%95%e7%94%a8outlook%e5%90%8c%e6%ad%a5%e6%94%b6%e7%99%bcgmail%e9%83%b5%e4%bb%b6%ef%bc%9f%ef%bc%88%e4%ba%8c%ef%bc%89/</link>
+<title>如何用Outlook同步收發Gmail郵件？（二）</title>
+<pubDate>2009-07-19 23:27:54</pubDate>
+<bbs:pick>0</bbs:pick>
+</item>
+<item>
+<link>http://dreamerscorp.com/blog/%e5%a6%82%e4%bd%95%e7%94%a8outlook%e5%90%8c%e6%ad%a5%e6%94%b6%e7%99%bcgmail%e9%83%b5%e4%bb%b6%ef%bc%9f%ef%bc%88%e4%b8%80%ef%bc%89/</link>
+<title>如何用Outlook同步收發Gmail郵件？（一）</title>
+<pubDate>2009-07-18 23:25:37</pubDate>
+<bbs:pick>0</bbs:pick>
+</item>
+<item>
+<link>http://dreamerscorp.com/blog/%e7%94%a8gmail%e8%a8%82%e9%96%b1rss/</link>
+<title>用Gmail訂閱RSS</title>
+<pubDate>2009-07-17 23:23:00</pubDate>
+<bbs:pick>0</bbs:pick>
+</item>
+<item>
+<link>http://dreamerscorp.com/blog/%e6%87%89%e5%b0%8dgmail%e7%95%b6%e6%a9%9f%e7%9a%84%e5%b9%be%e7%a8%ae%e8%be%a6%e6%b3%95/</link>
+<title>應對Gmail當機的幾種辦法</title>
+<pubDate>2009-07-16 23:21:03</pubDate>
+<bbs:pick>0</bbs:pick>
+</item>
+<item>
+<link>http://dreamerscorp.com/blog/%e5%a6%82%e4%bd%95%e7%94%a8gmail%e6%94%b6%e7%99%bcyahoo%e5%a5%87%e6%91%a9%e4%bf%a1%e7%ae%b1%e7%9a%84email%ef%bc%9f/</link>
+<title>如何用Gmail收發Yahoo!奇摩信箱的Email？</title>
+<pubDate>2009-07-15 23:19:00</pubDate>
+<bbs:pick>0</bbs:pick>
+</item>
+<item>
+<link>http://dreamerscorp.com/blog/google-wave-%e6%98%af%e4%bb%80%e9%ba%bc%ef%bc%88%e4%b8%8b%ef%bc%89/</link>
+<title>Google Wave 是什麼?（下）</title>
+<pubDate>2009-07-14 23:04:44</pubDate>
+<bbs:pick>0</bbs:pick>
+</item>
+<item>
+<link>http://dreamerscorp.com/blog/google-wave-%e6%98%af%e4%bb%80%e9%ba%bc%ef%bc%88%e4%b8%8a%ef%bc%89/</link>
+<title>Google Wave 是什麼?（上）</title>
+<pubDate>2009-07-13 22:59:22</pubDate>
+<bbs:pick>0</bbs:pick>
+</item>
+<item>
+<link>http://dreamerscorp.com/blog/google-labs%ef%bc%9a%e6%96%b0%e6%90%9c%e5%b0%8b%e6%9c%8d%e5%8b%99-news-timeline-%ef%bc%86-similar-images/</link>
+<title>Google Labs：新搜尋服務 News Timeline ＆ Similar Images</title>
+<pubDate>2009-07-12 23:07:52</pubDate>
+<bbs:pick>0</bbs:pick>
+</item>
+<item>
+<link>http://dreamerscorp.com/blog/google-labs%ef%bc%9afusion-tables/</link>
+<title>Google Labs：Fusion Tables</title>
+<pubDate>2009-07-11 01:12:54</pubDate>
+<bbs:pick>0</bbs:pick>
+</item>
+<item>
+<link>http://dreamerscorp.com/blog/gmail-labs%ef%bc%9a%e5%85%a7%e5%bb%bagoogle-search/</link>
+<title>Gmail Labs：內建Google Search </title>
+<pubDate>2009-07-10 01:44:42</pubDate>
+<bbs:pick>0</bbs:pick>
+</item>
+<item>
+<link>http://dreamerscorp.com/blog/gmail-labs%ef%bc%9a%e8%a9%a6%e9%a9%97%e7%a8%80%e5%a5%87%e5%8f%a4%e6%80%aa%ef%bc%88%e4%b8%89%ef%bc%89/</link>
+<title>Gmail Labs：試驗稀奇古怪（三）</title>
+<pubDate>2009-07-09 01:09:05</pubDate>
+<bbs:pick>0</bbs:pick>
+</item>
+<item>
+<link>http://dreamerscorp.com/blog/gmail-labs%ef%bc%9a%e8%a9%a6%e9%a9%97%e7%a8%80%e5%a5%87%e5%8f%a4%e6%80%aa%ef%bc%88%e4%ba%8c%ef%bc%89/</link>
+<title>Gmail Labs：試驗稀奇古怪（二）</title>
+<pubDate>2009-07-08 01:03:15</pubDate>
+<bbs:pick>0</bbs:pick>
+</item>
+<item>
+<link>http://dreamerscorp.com/blog/gmail-labs%ef%bc%9a%e8%a9%a6%e9%a9%97%e7%a8%80%e5%a5%87%e5%8f%a4%e6%80%aa%ef%bc%88%e4%b8%80%ef%bc%89/</link>
+<title>Gmail Labs：試驗稀奇古怪（一）</title>
+<pubDate>2009-07-07 00:53:29</pubDate>
+<bbs:pick>0</bbs:pick>
+</item>
+<item>
+<link>http://dreamerscorp.com/blog/google%e6%90%9c%e5%b0%8b%e6%8a%80%e5%b7%a7%ef%bc%88%e4%ba%94%ef%bc%89%ef%bc%9a%e5%af%a6%e7%94%a8%e5%b0%8f%e5%b7%a5%e5%85%b7/</link>
+<title>Google搜尋技巧（五）：實用小工具 </title>
+<pubDate>2009-07-06 00:45:19</pubDate>
+<bbs:pick>0</bbs:pick>
+</item>
+<item>
+<link>http://dreamerscorp.com/blog/google%e6%90%9c%e5%b0%8b%e6%8a%80%e5%b7%a7%ef%bc%88%e5%9b%9b%ef%bc%89%ef%bc%9a%e6%87%89%e7%94%a8%e5%af%a6%e4%be%8b/</link>
+<title>Google搜尋技巧（四）：應用實例</title>
+<pubDate>2009-07-05 00:36:15</pubDate>
+<bbs:pick>0</bbs:pick>
+</item>
+<item>
+<link>http://dreamerscorp.com/blog/google%e6%90%9c%e5%b0%8b%e6%8a%80%e5%b7%a7%ef%bc%88%e4%b8%89%ef%bc%89%ef%bc%9a%e9%80%b2%e9%9a%8e%e6%90%9c%e5%b0%8b%e5%92%8c%e6%90%9c%e5%b0%8b%e8%aa%9e%e6%b3%95/</link>
+<title>Google搜尋技巧（三）：進階搜尋和搜尋語法 </title>
+<pubDate>2009-07-04 00:33:14</pubDate>
+<bbs:pick>0</bbs:pick>
+</item>
+<item>
+<link>http://dreamerscorp.com/blog/google%e6%90%9c%e5%b0%8b%e6%8a%80%e5%b7%a7%ef%bc%88%e4%ba%8c%ef%bc%89%ef%bc%9a%e5%9f%ba%e6%9c%ac%e6%90%9c%e5%b0%8b%e6%8a%80%e5%b7%a7/</link>
+<title>Google搜尋技巧（二）：基本搜尋技巧</title>
+<pubDate>2009-07-03 00:25:09</pubDate>
+<bbs:pick>0</bbs:pick>
+</item>
+<item>
+<link>http://dreamerscorp.com/blog/google%e6%90%9c%e5%b0%8b%e6%8a%80%e5%b7%a7%ef%bc%88%e4%b8%80%ef%bc%89%ef%bc%9a%e6%90%9c%e5%b0%8b%e6%b5%81%e7%a8%8b%e5%92%8c%e5%b0%88%e9%96%80%e6%90%9c%e5%b0%8b%e5%bc%95%e6%93%8e/</link>
+<title>Google搜尋技巧（一）：搜尋流程和專門搜尋引擎</title>
+<pubDate>2009-07-02 00:15:19</pubDate>
+<bbs:pick>0</bbs:pick>
+</item>
+<item>
+<link>http://dreamerscorp.com/blog/101%e5%80%8bgoogle%e6%8a%80%e5%b7%a7%e2%80%94google%e6%8a%80%e5%b7%a7%e7%9a%84%e7%b5%82%e6%a5%b5%e6%94%b6%e9%9b%86%ef%bc%88%e4%ba%94%ef%bc%89/</link>
+<title>101個Google技巧—Google技巧的終極收集（五） </title>
+<pubDate>2009-07-01 00:02:23</pubDate>
+<bbs:pick>0</bbs:pick>
+</item>
+<item>
+<link>http://dreamerscorp.com/blog/101%e5%80%8bgoogle%e6%8a%80%e5%b7%a7%e2%80%94google%e6%8a%80%e5%b7%a7%e7%9a%84%e7%b5%82%e6%a5%b5%e6%94%b6%e9%9b%86%ef%bc%88%e5%9b%9b%ef%bc%89/</link>
+<title>101個Google技巧—Google技巧的終極收集（四）</title>
+<pubDate>2009-06-30 23:49:26</pubDate>
+<bbs:pick>0</bbs:pick>
+</item>
+<item>
+<link>http://dreamerscorp.com/blog/101%e5%80%8bgoogle%e6%8a%80%e5%b7%a7%e2%80%94google%e6%8a%80%e5%b7%a7%e7%9a%84%e7%b5%82%e6%a5%b5%e6%94%b6%e9%9b%86%ef%bc%88%e4%b8%89%ef%bc%89/</link>
+<title>101個Google技巧—Google技巧的終極收集（三） </title>
+<pubDate>2009-06-29 23:43:41</pubDate>
+<bbs:pick>0</bbs:pick>
+</item>
+<item>
+<link>http://dreamerscorp.com/blog/101%e5%80%8bgoogle%e6%8a%80%e5%b7%a7%e2%80%94google%e6%8a%80%e5%b7%a7%e7%9a%84%e7%b5%82%e6%a5%b5%e6%94%b6%e9%9b%86%ef%bc%88%e4%ba%8c%ef%bc%89/</link>
+<title>101個Google技巧—Google技巧的終極收集（二）</title>
+<pubDate>2009-06-28 23:43:24</pubDate>
+<bbs:pick>0</bbs:pick>
+</item>
+<item>
+<link>http://dreamerscorp.com/blog/101%e5%80%8bgoogle%e6%8a%80%e5%b7%a7%e2%80%94google%e6%8a%80%e5%b7%a7%e7%9a%84%e7%b5%82%e6%a5%b5%e6%94%b6%e9%9b%86%ef%bc%88%e4%b8%80%ef%bc%89/</link>
+<title>101個Google技巧—Google技巧的終極收集（一）</title>
+<pubDate>2009-06-27 23:36:33</pubDate>
+<bbs:pick>0</bbs:pick>
+</item>
+<item>
+<link>http://dreamerscorp.com/blog/%e5%a6%82%e4%bd%95%e5%9c%a8wordpress%e8%87%aa%e8%a8%82google%e6%90%9c%e5%b0%8b/</link>
+<title>如何在WordPress自訂Google搜尋</title>
+<pubDate>2009-06-26 23:29:53</pubDate>
+<bbs:pick>0</bbs:pick>
+</item>
+<item>
+<link>http://dreamerscorp.com/blog/%e8%87%aa%e8%a8%82google%e6%90%9c%e5%b0%8b%e5%bc%95%e6%93%8e%ef%bc%88%e4%b8%8b%ef%bc%89/</link>
+<title>自訂Google搜尋引擎（下）</title>
+<pubDate>2009-06-25 17:46:11</pubDate>
+<bbs:pick>0</bbs:pick>
+</item>
+<item>
+<link>http://dreamerscorp.com/blog/%e8%87%aa%e8%a8%82google%e6%90%9c%e5%b0%8b%e5%bc%95%e6%93%8e%ef%bc%88%e4%b8%8a%ef%bc%89/</link>
+<title>自訂Google搜尋引擎（上）</title>
+<pubDate>2009-06-24 17:28:56</pubDate>
+<bbs:pick>0</bbs:pick>
+</item>
+<item>
+<link>http://dreamerscorp.com/blog/%e7%b6%b2%e8%b7%af%e5%b8%9d%e5%9c%8b%ef%bc%9agoogle-%e4%bc%81%e6%a5%ad/</link>
+<title>網路帝國：Google 企業</title>
+<pubDate>2009-06-23 16:30:09</pubDate>
+<bbs:pick>0</bbs:pick>
+</item>
+</document>
