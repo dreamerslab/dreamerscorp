@@ -10,9 +10,8 @@ git clone git@github.com:dreamerslab/dreamerscorp.git $tmp
 echo '...done!'
 echo ''
 
-echo 'Removing development files...'
-sudo rm $tmp/README.md
-sudo rm -fr $tmp/docs
+echo 'Cloning configs...'
+cp configs/dreamercorp/wp-config.php $tmp/blog/wp-config.php
 echo '...done!'
 echo ''
 
