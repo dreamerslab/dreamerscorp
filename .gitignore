@@ -9,6 +9,7 @@ blog/wp-content/cache/*
 # blog/wp-content/db-config.ini
 # blog/wp-content/db.php
 blog/wp-content/tmp/*
+blog/wp-content/plugins/db-cache-reloaded-fix/cache/*
 
 blog/wp-content/plugins/all-in-one-seo-pack/all_in_one_seo_pack.log
 
