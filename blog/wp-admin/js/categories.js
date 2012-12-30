@@ -1,1 +1,34 @@
-jQuery(document).ready(function(d){var b=false,f,e,c,a;if(document.forms.addcat.category_parent){b=document.forms.addcat.category_parent.options}f=function(i,h){var g,j;g=d("<span>"+d("name",i).text()+"</span>").html();j=d("cat",i).attr("id");b[b.length]=new Option(g,j);e(i,h)};e=function(g,i){var h=d(i.parsed.responses[0].data);if(h.length==1){inlineEditTax.addEvents(d(h.id))}};a=function(h,g){var j=d("cat",h).attr("id"),i;for(i=0;i<b.length;i++){if(j==b[i].value){b[i]=null}}};c=function(g){if("undefined"!=showNotice){return showNotice.warn()?g:false}return g};if(b){d("#the-list").wpList({addAfter:f,delBefore:c,delAfter:a})}else{d("#the-list").wpList({addAfter:e,delBefore:c})}d('.delete a[class^="delete"]').click(function(){return false})});
+jQuery(document).ready(function($) {
+	var options = false, addAfter, delBefore, delAfter;
+	if ( document.forms['addcat'].category_parent )
+		options = document.forms['addcat'].category_parent.options;
+
+	addAfter = function( r, settings ) {
+		var name, id;
+
+		name = $("<span>" + $('name', r).text() + "</span>").text();
+		id = $('cat', r).attr('id');
+		options[options.length] = new Option(name, id);
+	}
+
+	delAfter = function( r, settings ) {
+		var id = $('cat', r).attr('id'), o;
+		for ( o = 0; o < options.length; o++ )
+			if ( id == options[o].value )
+				options[o] = null;
+	}
+
+	delBefore = function(s) {
+		if ( 'undefined' != showNotice )
+			return showNotice.warn() ? s : false;
+
+		return s;
+	}
+
+	if ( options )
+		$('#the-list').wpList( { addAfter: addAfter, delBefore: delBefore, delAfter: delAfter } );
+	else
+		$('#the-list').wpList({ delBefore: delBefore });
+
+	$('.delete a[class^="delete"]').live('click', function(){return false;});
+});
