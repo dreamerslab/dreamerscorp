@@ -1,19 +1,21 @@
 === Simple Tags ===
 Contributors: momo360modena
-Donate link: http://www.herewithme.fr/wordpress-plugins/simple-tags#donation
-Tags: tag, posts, tags, admin, administration, tagging, navigation, import
-Requires at least: 2.8
-Tested up to: 2.9.1
-Stable tag: 1.7.4.4
+Donate link: http://beapi.fr/donate/
+Tags: tag, posts, tags, admin, administration, tagging, navigation, terms, taxonomy
+Requires at least: 3.0
+Tested up to: 3.3
+Stable tag: 2.2
 
-Simple Tags is THE perfect tool to manage perfectly your WP 2.8 and 2.9 tags (Tags suggestion, Mass Edit Terms (Tags and Category), Auto link tags, Ajax Autocompletion, Click tags, Related Posts, Related Tags, Advanced edit tags, etc.)
+Add some tools for taxonomies : Terms suggestion, Mass Edit Terms, Auto link Terms, Ajax Autocompletion, Click Terms, Auto terms, Advanced manage terms, Advanced Post Terms, Related Posts by Terms, etc.
 
 == Description ==
 
 Simple Tags is the successor of Simple Tagging Plugin
-**This is THE perfect tool to manage perfeclty your WP 2.8 and 2.9 tags**
+**This is THE perfect tool to manage perfectly your WP terms for any taxonomy**
 
 It was written with this philosophy : best performances, more secured and brings a lot of new functions
+
+This plugin is developped on WordPress 3.3, with the constant WP_DEBUG to TRUE.
 
 * Administration
 	* Tags suggestion from Yahoo! Term Extraction API, OpenCalais, Alchemy, Zemanta, Tag The Net, Local DB with AJAX request
@@ -24,55 +26,33 @@ It was written with this philosophy : best performances, more secured and brings
 	* Auto tags !
 	* Type-ahead input tags / Autocompletion Ajax
 	* Click tags
-	* Related tags !
-	* Importer for embedded tags
 	* Possibility to tag pages (not only posts) and include them inside the tags results
-	* Embedded tags ([tags]tag1, tag2[/tags]) for compatibility with old plugins
 	* **Easy configuration ! (in WP admin)**
 
-* Blog
-	* Meta keywords generate from tags in your header's blog
+* Public
 	* Technorati, Flickr and Delicious tags
 	* Dynamic Tag Clouds with colors with Widgets (random order, etc)
-	* Related content since common tags
-	* Possibility to add related posts inside RSS
-	* Extended the_tags function (outside the loop, technorati, etc)
 
 And more...
 
 == Installation ==
 
-The Simple Tags can be installed in 4 easy steps:
-	
-	1. Unzip "Simple tags" archive and put all files into your "plugins" folder (/wp-content/plugins/) or to create a sub directory into the plugins folder (recommanded), like /wp-content/plugins/simple-tags/
-	
-	2. Activate the plugin
-	
-	3. Inside the Wordpress admin, go to Options > Simple Tags, adjust the parameters according to your needs, and save them.
-	
-	4. You can start advanced tag edit under Manage menu.
+**Required PHP5.**
+
+The Simple Tags can be installed in 3 easy steps:
+
+1. Unzip "Simple tags" archive and put all files into a folder like "/wp-content/plugins/simple-tags/"
+2. Activate the plugin through the 'Plugins' menu in WordPress
+3. Inside the Wordpress admin, go to Options > Simple Tags, adjust the parameters according to your needs, and save them.
 
 == Frequently Asked Questions ==
 
 = Simple Tags is compatible with which WordPress versions ? =
 
-1.7   and upper are compatible only with WordPress 2.8, 2.9 and upper !
-1.6.7 and before are compatible with WordPress 2.3 to 2.7
-Before WP 2.3, you must use the plugin Simple Tagging.
-
-= How import tags from my old tags plugin ? =
-
-Yes, with official default importer. Manage -> Import
-Compatible with UTW, Simple Tagging, Etc.
-
-= Simple Tags is compatible with WPmu ? =
-
-Yes, but it not allow tag cloud site. Soon !
-
-= Simple Tags can import Embedded Tags from old plugins =
-
-Yes, copy importer "simple-tags/extras/simple-tags.importer.php" into "wp-admin/import/simple-tags.importer.php"
-Then: Manage - Import - Embedded Tags
+* 2.0 and upper are compatible only with WordPress 3.0 & 3.1 & 3.2 & 3.3 !
+* 1.7 and upper are compatible only with WordPress 2.8, 2.9 !
+* 1.6.7 and before are compatible with WordPress 2.3, 2.5, 2.6, 2.7
+* Before WP 2.3, you must use the plugin Simple Tagging.
 
 == Screenshots ==
 
@@ -81,10 +61,96 @@ Then: Manage - Import - Embedded Tags
 3. Autotagging your content !
 4. Add tags easily with click tags !
 3. To help you to add easily tags, Simple Tags has an autocompletion script. When you begin to tape a letter or more, a list a tags appears : you have only to choose ! You can choose the down direction to see all the tags.
-6. You also can suggest tags from lot's of service (local, tag the net, yahoo!)
+6. You also can suggest tags from lot's of service (Yahoo! Term Extraction API, OpenCalais, Alchemy, Zemanta, Tag The Net, Local DB)
 
 == Changelog ==
 
+* Version 2.2 :
+	* Add compatibility with WP3.3
+	* Move JavaScript register/enqueue to dedicated hook
+* Version 2.1.2 :
+	* Add some nonces for improve security for settings panel
+* Version 2.1.1 :
+	* Add a feature that allow deleting rarely used terms. (based on counter term)
+	* Fix bug for allow Suggested Tags for page CPT.
+* Version 2.1 :
+	* Add compatibility with WP 3.2
+	* Fix bug with autocompletion. (jQuery want now a strict content type text/plain)
+	* Upgrade JS Libary (jQuery Autocomplete, jQuery Cookie, jQuery bgIframe)
+* Version 2.0-beta9 :
+	* Fix conflict with plugin using Google Library Javascript for jQuery. Example : "Use Google Libraries"
+	* Add an option for choose input text or textarea for old tags field
+	* Add an option for min chars autocompletion
+* Version 2.0-beta8 :
+	* Update POT.
+	* Update french translation.
+* Version 2.0-beta7 :
+	* Add a metabox on write page that allow to deactive autolinks or autotags for a specific post
+	* Add an option for restore old feature "Manage terms"
+	* Add an option for restore old feature "Related posts"
+	* Remove "Clean DB" and "Rename slugs" in manage terms
+	* Remove "include cat" on "Related Posts" settings
+	* Optimize function "Related posts"
+	* Reorganize admin for have a tab features with all features available
+	* Use a input text for Simple Tags autocompletion field
+	* Remove ID of term from autocompletion
+	* Fix autocompletion on mange terms page
+	* Add a field for advanced usage on tagcloud widget
+* Version 2.0-beta6 :
+	* Add Japanese translation (thanks - kazuhisa)
+	* Fix a bug with search and taxonomy param for mass edit terms. (ticket #233)
+	* Fix a bug with auto tags and whole word option. (ticket #232)
+	* Fix a bug with tag/pages for include pages in WP_Query for a tag
+	* Improve performance of auto link
+	* Fix a bug with max links by posts for auto links
+	* Add an option for choose priority hook of auto links
+* Version 2.0-beta5 :
+	* Fix a bug and a notice with st_the_tags() that not display any tags...
+* Version 2.0-beta4 :
+	* Fix a fatal with error with autoterms.
+	* Fix a bug with autoterms when saving post, somes times called twice...
+	* Improve performance when saving posts.
+	* Allow old tags field for each custom post type that use post tags.
+* Version 2.0-beta3 :
+	* Fix a bug when the st_the_tags() function is called.
+* Version 2.0-beta2 :
+	* Restore empty templates functions for skip errors
+	* Fix a bug with autolinks
+	* Restore custom post tags feature : st_the_tags()
+	* Fix a bug with widget taxo option saving
+* Version 2.0-beta1 :
+	* This version is a back to fondamentals. Somes features are removed ! 
+	* This version need testing !
+	* Remove old marker <!--st_tag_cloud-->
+	* Remove related posts
+	* Remove related tags
+	* Remove tags as HTML keywords
+	* Remove nofollow options
+	* Remove custom function for display current post tags
+	* Remove auto-add post tags
+	* Remove embedded tags
+	* Change method for tags for page.
+	* Improve memory consommation : all feature can be deactived.
+	* Improve memory consommation : Stop use class variables for options
+	* Support mass edit with CPT/CT
+	* Improve AJAX call by using WordPress hook
+* Version 1.8.1 :
+	* Improve uninstaller
+	* Improve code widgets
+	* Improve support of custom taxonomies for simple tags features
+* Version 1.8.0 :
+	* Compatibility 3.0
+	* Add an option for auto-tags
+	* Remove somes notices
+	* Fix a bug with tag cloud and empty terms
+	* Fix a bug with comma on font-size CSS depending locales
+* Version 1.7.5 :
+	* Fix a bug with auto links terms. (type input)
+	* Fix cache conflict key
+	* Fix a opencalais bug on firt pass integration
+	* Fix a bug with limit days/category filter for tag cloud.
+	* Fix javascript autocomplete for allow enter new tag.
+	* Re-add list of tags on manage page.
 * Version 1.7.4.4 :
 	* Fix a stupid during the first activation. (PHP4/PHP5)
 * Version 1.7.4.3 :
@@ -319,3 +385,7 @@ Then: Manage - Import - Embedded Tags
 	* Fixes 2-3 minors bugs
 * Version 1.0
 	* Initial version
+	
+== Upgrade Notice ==
+
+Nothing to say...

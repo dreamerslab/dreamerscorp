@@ -1,0 +1,16 @@
+s:2148:"a:4:{s:10:"last_query";s:628:"
+		SELECT
+			target.post_id, sum(target.weight * log(55 / least(55, freqs.freq))) as score
+		FROM
+			wp_wp_rp_tags as target,
+			(SELECT label, count(1) as freq FROM wp_wp_rp_tags
+				WHERE label IN ('P_google', 'P_google maps', 'C_google', 'A_googl', 'A_map', 'A_5', 'A_buddi', 'A_4', 'A_select', 'A_creat', 'A_goto')
+				GROUP BY label
+			) as freqs
+		WHERE
+			target.post_id NOT IN ('1484') AND
+			target.label=freqs.label AND
+			target.label IN ('P_google', 'P_google maps', 'C_google', 'A_googl', 'A_map', 'A_5', 'A_buddi', 'A_4', 'A_select', 'A_creat', 'A_goto')
+		GROUP BY target.post_id
+		ORDER BY score desc
+		LIMIT 10;";s:11:"last_result";a:10:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:4:"1501";s:5:"score";s:16:"40.2633191374265";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:4:"1497";s:5:"score";s:16:"6.50114923372993";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:4:"1495";s:5:"score";s:16:"6.50114923372993";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:4:"1445";s:5:"score";s:16:"6.50114923372993";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:4:"1447";s:5:"score";s:16:"6.31052887444855";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:4:"1439";s:5:"score";s:16:"6.31052887444855";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:4:"1499";s:5:"score";s:16:"6.09980784316926";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:4:"1513";s:5:"score";s:16:"3.90258326583304";}i:8;O:8:"stdClass":2:{s:7:"post_id";s:4:"1470";s:5:"score";s:16:"3.90258326583304";}i:9;O:8:"stdClass":2:{s:7:"post_id";s:4:"1452";s:5:"score";s:16:"3.90258326583304";}}s:8:"col_info";a:2:{i:0;O:8:"stdClass":13:{s:4:"name";s:7:"post_id";s:5:"table";s:6:"target";s:3:"def";s:0:"";s:10:"max_length";i:4;s:8:"not_null";i:0;s:11:"primary_key";i:0;s:12:"multiple_key";i:0;s:10:"unique_key";i:0;s:7:"numeric";i:1;s:4:"blob";i:0;s:4:"type";s:3:"int";s:8:"unsigned";i:0;s:8:"zerofill";i:0;}i:1;O:8:"stdClass":13:{s:4:"name";s:5:"score";s:5:"table";s:0:"";s:3:"def";s:0:"";s:10:"max_length";i:16;s:8:"not_null";i:0;s:11:"primary_key";i:0;s:12:"multiple_key";i:0;s:10:"unique_key";i:0;s:7:"numeric";i:1;s:4:"blob";i:0;s:4:"type";s:4:"real";s:8:"unsigned";i:0;s:8:"zerofill";i:0;}}s:8:"num_rows";i:10;}";

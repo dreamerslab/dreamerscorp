@@ -14,18 +14,19 @@ RewriteRule \.(jpeg|jpg|gif|bmp|png|swf|js|css)$ ./wp-content/plugins/http-expre
 <IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteBase /blog/
+RewriteRule ^index\.php$ - [L]
 # STEALTH-LOGIN 
-RewriteRule ^_logout wp-login.php?action=logout&amp;_wpnonce=b88b3c1d82&stealth_out_key=5hyd0y2eq2f0aqf135acv0mr4q [L]
-RewriteRule ^_login wp-login.php?stealth_in_key=1aynr2j6vulf1nieuwbyg35plh&redirect_to=http://dreamerscorp.com/blog/wp-admin/ [R,L]
-RewriteRule ^_admin wp-admin/?stealth_admin_key=u4joxwnloqkzm0p41jbctb32ft [R,L]
+RewriteRule ^_logout wp-login.php?action=logout&amp;_wpnonce=ec458512fc&stealth_out_key=uudn55hgovxnbz1yk0yiesaokp [L]
+RewriteRule ^_wala wp-login.php?stealth_in_key=5cgzlyt423ivni6uj11x1ps0vo&redirect_to=http://dreamerscorp.com/blog/wp-admin/ [R,L]
+RewriteRule ^_admin wp-admin/?stealth_admin_key=qfmbuktep1vr6opmcn0ogwtela [R,L]
 RewriteCond %{HTTP_REFERER} !^http://dreamerscorp.com/blog/wp-admin 
 RewriteCond %{HTTP_REFERER} !^http://dreamerscorp.com/blog/wp-login\.php 
-RewriteCond %{HTTP_REFERER} !^http://dreamerscorp.com/blog/_login 
+RewriteCond %{HTTP_REFERER} !^http://dreamerscorp.com/blog/_wala 
 RewriteCond %{HTTP_REFERER} !^http://dreamerscorp.com/blog/_admin 
-RewriteCond %{QUERY_STRING} !^stealth_in_key=1aynr2j6vulf1nieuwbyg35plh 
-RewriteCond %{QUERY_STRING} !^stealth_out_key=5hyd0y2eq2f0aqf135acv0mr4q 
-RewriteCond %{QUERY_STRING} !^stealth_reg_key=sxy0jb1nijy0l5hxpmk0kpvfwo 
-RewriteCond %{QUERY_STRING} !^stealth_admin_key=u4joxwnloqkzm0p41jbctb32ft 
+RewriteCond %{QUERY_STRING} !^stealth_in_key=5cgzlyt423ivni6uj11x1ps0vo 
+RewriteCond %{QUERY_STRING} !^stealth_out_key=uudn55hgovxnbz1yk0yiesaokp 
+RewriteCond %{QUERY_STRING} !^stealth_reg_key=hbtsvwwqsfitm4k2qij4t4w3xd 
+RewriteCond %{QUERY_STRING} !^stealth_admin_key=qfmbuktep1vr6opmcn0ogwtela 
 RewriteRule ^wp-login\.php http://dreamerscorp.com/blog [L]
 RewriteCond %{QUERY_STRING} ^loggedout=true 
 RewriteRule ^wp-login\.php http://dreamerscorp.com/blog [L]
