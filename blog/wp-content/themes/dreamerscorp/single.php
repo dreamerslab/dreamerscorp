@@ -46,9 +46,6 @@ get_header();
           Posted in <?php the_category(', ') ?> | <?php comments_popup_link('No Comments &#187;', '1 Comment &#187;', '% Comments &#187;'); ?>
           </div>
         </div>
-        <div class="related">
-          <?php wp_related_posts(); ?>
-        </div>
         <br />
         <div class="navigation clearfix">
           <div class="alignleft"><?php previous_post_link('&laquo; %link') ?></div>

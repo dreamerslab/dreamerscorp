@@ -464,33 +464,27 @@ nav {
     _background-image: none;
 }
 
-.widget-categories .sidebar-logos {
+.widget_categories .sidebar-logos {
     background: url("/img/icon-categories.png");
     _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',src='/img/icon-categories.png');
     _background-image: none;
 }
 
-.widget-archive .sidebar-logos {
+.widget_archive .sidebar-logos {
     background: url("/img/icon-archive.png");
     _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',src='/img/icon-archive.png');
     _background-image: none;
 }
 
-.widget-recent-entries .sidebar-logos {
+.widget_recent_entries .sidebar-logos {
     background: url("/img/icon-repost.png");
     _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',src='/img/icon-repost.png');
     _background-image: none;
 }
 
-.widget-recent-comments .sidebar-logos {
+.widget_recent_comments .sidebar-logos {
     background: url("/img/icon-recomment.png");
     _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',src='/img/icon-recomment.png');
-    _background-image: none;
-}
-
-#g-guestbook .sidebar-logos {
-    background-image: url("/img/icon-gcomment.png");
-    _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',src='/img/icon-gcomment.png');
     _background-image: none;
 }
 
@@ -862,9 +856,8 @@ select{width:130px;}
     text-align: center;
 }
 
-.reply {
-    padding: 30px 10px 20px 0;
-    text-align: right;
+.reply, .says {
+    display: none;
 }
 
 /* End Comments */

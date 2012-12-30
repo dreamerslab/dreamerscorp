@@ -13,7 +13,7 @@
     <link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> RSS Feed" href="<?php bloginfo('rss2_url'); ?>" />
     <link rel="alternate" type="application/atom+xml" title="<?php bloginfo('name'); ?> Atom Feed" href="<?php bloginfo('atom_url'); ?>" />
     <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
-    <link rel="stylesheet" href="/blog/wp-content/themes/dreamerscorp/style.css?v=20120729" type="text/css" media="screen" />
+    <link rel="stylesheet" href="/blog/wp-content/themes/dreamerscorp/style.css?v=20121230" type="text/css" media="screen" />
     <style type="text/css">
     @import url("http://dreamerscorp.com/css/overlay.css");
     </style>
