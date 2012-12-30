@@ -3,7 +3,7 @@
 Plugin Name: Hyper Cache
 Plugin URI: http://www.satollo.net/plugins/hyper-cache
 Description: Hyper Cache is a cache system for WordPress to improve it's perfomances and save resources. <a href="http://www.satollo.net/plugins/hyper-cache" target="_blank">Hyper Cache official page</a>. To manually upgrade remember the sequence: deactivate, update, reactivate.
-Version: 2.8.8
+Version: 2.9.0.4
 Text Domain: hyper-cache
 Author: Stefano Lissa
 Author URI: http://www.satollo.net
@@ -182,6 +182,8 @@ function hyper_cache_invalidate_post($post_id)
 
         $link = get_permalink($post_id);
         hyper_log('Permalink to invalidate ' . $link);
+        // Remove 'http://', and for wordpress 'pretty URLs' strip trailing slash (e.g. 'http://my-site.com/my-post/' -> 'my-site.com/my-post')
+        // The latter ensures existing cache files are still used if a wordpress admin just adds/removes a trailing slash to/from the permalink format
         $link = substr($link, 7);
         hyper_log('Corrected permalink to invalidate ' . $link);
         $file = md5($link);
@@ -339,10 +341,15 @@ function hyper_generate_config(&$options)
     $buffer .= '$hyper_cache_home = ' . (isset($options['home'])?'true':'false') . ";\n";
     // Disable last modified header
     $buffer .= '$hyper_cache_lastmodified = ' . (isset($options['lastmodified'])?'true':'false') . ";\n";
+    // Allow browser caching?
+    $buffer .= '$hyper_cache_browsercache = ' . (isset($options['browsercache'])?'true':'false') . ";\n";
+    // Do not use cache if browser sends no-cache header?
+    $buffer .= '$hyper_cache_nocache = ' . (isset($options['nocache'])?'true':'false') . ";\n";
 
     if ($options['gzip']) $options['store_compressed'] = 1;
 
     $buffer .= '$hyper_cache_gzip = ' . (isset($options['gzip'])?'true':'false') . ";\n";
+    $buffer .= '$hyper_cache_gzip_on_the_fly = ' . (isset($options['gzip_on_the_fly'])?'true':'false') . ";\n";
     $buffer .= '$hyper_cache_store_compressed = ' . (isset($options['store_compressed'])?'true':'false') . ";\n";
 
     //$buffer .= '$hyper_cache_clean_interval = ' . ($options['clean_interval']*60) . ";\n";

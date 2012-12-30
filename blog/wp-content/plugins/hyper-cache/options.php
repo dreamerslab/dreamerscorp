@@ -64,6 +64,20 @@ else
 
 ?>
 <style>
+/* Admin header */
+#satollo-header {
+  text-align: left;
+  background-color: #f4f4f4;
+  padding: 5px;
+  padding-left: 15px;
+  border-radius: 3px;
+  text-transform: uppercase;
+}
+
+#satollo-header a {
+    margin-right: 15px;
+}
+
 .hints {
     border: 1px solid #aaf;
     background-color: #fafaff;
@@ -86,6 +100,22 @@ else
 </style>
 
 <div class="wrap">
+    
+<div id="satollo-header">
+    <a href="http://www.satollo.net/plugins/hyper-cache" target="_blank">Get Help</a>
+    <a href="http://www.satollo.net/forums" target="_blank">Forum</a>
+
+    <form style="display: inline; margin: 0;" action="http://www.satollo.net/wp-content/plugins/newsletter/do/subscribe.php" method="post" target="_blank">
+        Subscribe to satollo.net <input type="email" name="ne" required placeholder="Your email">
+        <input type="hidden" name="nr" value="hyper-cache">
+        <input type="submit" value="Go">
+    </form>
+
+    <a href="https://www.facebook.com/satollo.net" target="_blank"><img style="vertical-align: bottom" src="http://www.satollo.net/images/facebook.png"></a>
+
+    <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RJB428Z5KJPR4" target="_blank"><img style="vertical-align: bottom" src="http://www.satollo.net/images/donate.png"></a>
+    <a href="http://www.satollo.net/donations" target="_blank">Even <b>1$</b> helps: read more</a>
+</div>
 
 <?php if (!defined('WP_CACHE') || !WP_CACHE) { ?>
 <div class="error">
@@ -95,7 +125,13 @@ else
 
 <h2>Hyper Cache</h2>
 
-<?php include dirname(__FILE__) . '/header.php'; ?>
+<h3>Contributors</h3>
+
+<p>
+  <strong>Florian Höch</strong> (<a href="http://hoech.net" target="_blank">hoech.net</a>) for new features on version 2.9+. 
+  <strong>Quentin</strong> (<a href="http://www.tradpress.fr" target="_blank">TradPress</a>) for French translation. 
+  <strong>Mckryak</strong> for Russian translation. Tommy Tung alias Ragnarok for Chineese and Twaineese translations. And many others to be added.
+</p>
 
 <?php
     if ($error)
@@ -213,6 +249,16 @@ else
         </div>
     </td>    
 </tr>
+
+<tr valign="top">
+    <th><?php _e('Allow browser caching', 'hyper-cache'); ?></th>
+    <td>
+        <input type="checkbox" name="options[browsercache]" value="1" <?php echo $options['browsercache']?'checked':''; ?>/>
+        <div class="hints">
+        <?php _e('Allow browser caching.','hyper-cache'); ?>
+        </div>
+    </td>
+</tr>
 </table>
 <p class="submit">
     <input class="button" type="submit" name="save" value="<?php _e('Update'); ?>">
@@ -267,27 +313,43 @@ else
 
 <table class="form-table">
 <tr valign="top">
-    <th><?php _e('Enable compression', 'hyper-cache'); ?></th>
+    <th><?php _e('Store compressed pages', 'hyper-cache'); ?></th>
     <td>
-        <input type="checkbox" name="options[gzip]" value="1" <?php echo $options['gzip']?'checked':''; ?> />
+        <input type="checkbox" name="options[store_compressed]" value="1" <?php echo $options['store_compressed']?'checked':''; ?>
+            onchange="jQuery('input[name=&quot;options[gzip]&quot;]').attr('disabled', !this.checked)" />
         <div class="hints">
-        <?php _e('When possible the page will be sent compressed to save bandwidth.', 'hyper-cache'); ?>
-        <?php _e('Only the textual part of a page can be compressed, not images, so a photo
-        blog will consume a lot of bandwidth even with compression enabled.', 'hyper-cache'); ?>
+        <?php _e('Enable this option to minimize disk space usage and make sending of compressed pages possible with the option below.', 'hyper-cache'); ?>
+        <?php _e('The cache will be a little less performant.', 'hyper-cache'); ?>
         <?php _e('Leave the options disabled if you note malfunctions, like blank pages.', 'hyper-cache'); ?>
         <br />
-        <?php _e('If you enable this option, the option below will be enabled as well.', 'hyper-cache'); ?>
+        <?php _e('If you enable this option, the option below will be available as well.', 'hyper-cache'); ?>
         </div>
     </td>
 </tr>
 
 <tr valign="top">
-    <th><?php _e('Disk space usage', 'hyper-cache'); ?></th>
+    <th><?php _e('Send compressed pages', 'hyper-cache'); ?></th>
     <td>
-        <input type="checkbox" name="options[store_compressed]" value="1" <?php echo $options['store_compressed']?'checked':''; ?> />
+        <input type="checkbox" name="options[gzip]" value="1" <?php echo $options['gzip']?'checked':''; ?>
+            <?php echo $options['store_compressed']?'':'disabled'; ?> />
         <div class="hints">
-        <?php _e('Enable this option to minimize disk space usage.', 'hyper-cache'); ?>
-        <?php _e('The cache will be a little less performant.', 'hyper-cache'); ?>
+        <?php _e('When possible (i.e. if the browser accepts compression and the page was cached compressed) the page will be sent compressed to save bandwidth.', 'hyper-cache'); ?>
+        <?php _e('Only the textual part of a page can be compressed, not images, so a photo
+        blog will consume a lot of bandwidth even with compression enabled.', 'hyper-cache'); ?>
+        <?php _e('Leave the options disabled if you note malfunctions, like blank pages.', 'hyper-cache'); ?>
+        <br />
+        <?php _e('If you enable this option, the option below will be available as well.', 'hyper-cache'); ?>
+        </div>
+    </td>
+</tr>
+
+<tr valign="top">
+    <th><?php _e('On-the-fly compression', 'hyper-cache'); ?></th>
+    <td>
+        <input type="checkbox" name="options[gzip_on_the_fly]" value="1" <?php echo $options['gzip_on_the_fly']?'checked':''; ?> />
+        <div class="hints">
+        <?php _e('When possible (i.e. if the browser accepts compression) use on-the-fly compression to save bandwidth when sending pages which are not compressed.', 'hyper-cache'); ?>
+        <?php _e('Serving of such pages will be a little less performant.', 'hyper-cache'); ?>
         <?php _e('Leave the options disabled if you note malfunctions, like blank pages.', 'hyper-cache'); ?>
         </div>
     </td>
@@ -379,14 +441,25 @@ else
         </div>
     </td>
 </tr>
+
+<tr valign="top">
+    <th><?php _e('Allow browser to bypass cache', 'hyper-cache'); ?></th>
+    <td>
+        <input type="checkbox" name="options[nocache]" value="1" <?php echo $options['nocache']?'checked':''; ?>/>
+        <div class="hints">
+        <?php _e('Do not use cache if browser sends no-cache header (e.g. on explicit page reload).','hyper-cache'); ?>
+        </div>
+    </td>
+</tr>
 </table>
 
 
-<h3>Filters</h3>
+<h3><?php _e('Filters', 'hyper-cache'); ?></h3>
 <p>
-    Here you can: exclude pages and posts from the cache, specifying their address (URI); disable Hyper Cache for specific
-    User Agents (browsers, bot, mobile devices, ...); disable the cache for users that have specific cookies.
+    <?php _e('Here you can: exclude pages and posts from the cache, specifying their address (URI); disable Hyper Cache for specific
+    User Agents (browsers, bot, mobile devices, ...); disable the cache for users that have specific cookies.', 'hyper-cache'); ?>
 </p>
+
 <table class="form-table">
 <tr valign="top">
     <th><?php _e('URI to reject', 'hyper-cache'); ?></th>

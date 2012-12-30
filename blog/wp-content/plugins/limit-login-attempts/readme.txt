@@ -2,8 +2,8 @@
 Contributors: johanee
 Tags: login, security, authentication
 Requires at least: 2.8
-Tested up to: 3.2.1
-Stable tag: 1.6.2
+Tested up to: 3.3.2
+Stable tag: 1.7.1
 
 Limit rate of login attempts, including by way of cookies, for each IP. Fully customizable.
 
@@ -22,6 +22,7 @@ Features
 * Informs user about remaining retries or lockout time on login page
 * Optional logging, optional email notification
 * Handles server behind reverse proxy
+* It is possible to whitelist IPs using a filter. But you probably shouldn't. :-)
 
 Translations: Bulgarian, Brazilian Portuguese, Catalan, Chinese (Traditional), Czech, Dutch, Finnish, French, German, Hungarian, Norwegian, Persian, Romanian, Russian, Spanish, Swedish, Turkish
 
@@ -51,9 +52,25 @@ The option default to NOT being behind a proxy -- which should be by far the com
 
 You probably are not or you would know. We show a pretty good guess on the option page. Set the option using this unless you are sure you know better.
 
+= Can I whitelist my IP so I don't get locked out? =
+
+First please consider if you really need this. Generally speaking it is not a good idea to have exceptions to your security policies.
+
+That said, there is now a filter which allows you to do it: "limit_login_whitelist_ip".
+
+Example:
+function my_ip_whitelist($allow, $ip) {
+	 return ($ip == 'my-ip') ? true : $allow;
+}
+add_filter('limit_login_whitelist_ip', 'my_ip_whitelist', 10, 2);
+
+Note that we still do notification and logging as usual. This is meant to allow you to be aware of any suspicious activity from whitelisted IPs.
+
 = I locked myself out testing this thing, what do I do? =
 
 Either wait, or:
+
+If you know how to edit / add to PHP files you can use the IP whitelist functionality described above. You should then use the "Restore Lockouts" button on the plugin settings page and remove the whitelist function again.
 
 If you have ftp / ssh access to the site rename the file "wp-content/plugins/limit-login-attempts/limit-login-attempts.php" to deactivate the plugin.
 
@@ -66,6 +83,23 @@ If you have access to the database (for example through phpMyAdmin) you can clea
 3. Administration interface in WordPress 3.0.4
 
 == Changelog ==
+
+= 1.7.1 =
+This version fixes a security bug in version 1.6.2 and 1.7.0. Please upgrade immediately.
+
+"Auth cookies" are special cookies set at login that authenticating you to the system. It is how WordPress "remembers" that you are logged in between page loads.
+
+During lockout these are supposed to be cleared, but a change in 1.6.2 broke this. It allowed an attacker to keep trying to break these cookies during a lockout.
+
+Lockout of normal password login attempts still worked as it should, and it appears that all "auth cookie" attempts would keep getting logged.
+
+In theory the "auth cookie" is quite resistant to brute force attack. It contains a cryptographic hash of the user password, and the difficulty to break it is not based on the password strength but instead on the cryptographic operations used and the length of the hash value. In theory it should take many many years to break this hash. As theory and practice does not always agree it is still a good idea to have working lockouts of any such attempts.
+
+= 1.7.0 =
+* Added filter that allows whitelisting IP. Please use with care!!
+* Update to Spanish translation, thanks to Marcelo Pedra
+* Updated Swedish translation
+* Tested against WordPress 3.3.2
 
 = 1.6.2 =
 * Fix bug where log would not get updated after it had been cleared
@@ -145,3 +179,8 @@ If you have access to the database (for example through phpMyAdmin) you can clea
 
 = 1.0 =
 * Initial version
+
+== Upgrade Notice ==
+
+= 1.7.1 =
+Users of version 1.6.2 and 1.7.0 should upgrade immediately. There was a problem with "auth cookie" lockout enforcement. Lockout of normal password login attempts still worked as it should. Please see plugin Changelog for more information.

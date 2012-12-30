@@ -1,7 +1,7 @@
 <?php
 /*
  
- $Id: sitemap-ui.php 440117 2011-09-19 13:24:49Z arnee $
+ $Id: sitemap-ui.php 583237 2012-08-08 21:06:12Z arnee $
 
 */
 
@@ -443,6 +443,39 @@ class GoogleSitemapGeneratorUI {
 					padding:1px;
 					margin:0;
 				}
+
+				<?php if (version_compare($wp_version, "3.4", "<")): //Fix style for WP 3.4 (dirty way for now..) ?>
+
+				.inner-sidebar #side-sortables, .columns-2 .inner-sidebar #side-sortables {
+					min-height: 300px;
+					width: 280px;
+					padding: 0;
+				}
+
+				.has-right-sidebar .inner-sidebar {
+					display: block;
+				}
+
+				.inner-sidebar {
+					float: right;
+					clear: right;
+					display: none;
+					width: 281px;
+					position: relative;
+				}
+
+				.has-right-sidebar #post-body-content {
+					margin-right: 300px;
+				}
+
+				#post-body-content {
+					width: auto !important;
+					float: none !important;
+				}
+
+				<?php endif; ?>
+
+
 			</style>
 				
 			<?php elseif(version_compare($wp_version,"2.5",">=")): ?>
@@ -701,18 +734,6 @@ class GoogleSitemapGeneratorUI {
 										}
 									}
 									
-									if($status->_usedAsk) {
-										if($status->_askSuccess) {
-											echo "<li>" .__("Ask.com was <b>successfully notified</b> about changes.",'sitemap'). "</li>";
-											$at = $status->GetAskTime();
-											if($at>4) {
-												echo "<li class=\sm_optimize\">" . str_replace("%time%",$at,__("It took %time% seconds to notify Ask.com, maybe you want to disable this feature to reduce the building time.",'sitemap')) . "</li>";
-											}
-										} else {
-											echo "<li class=\"sm_error\">" . str_replace("%s",wp_nonce_url($this->sg->GetBackLink() . "&sm_ping_service=ask&noheader=true",'sitemap'),__('There was a problem while notifying Ask.com. <a href="%s">View result</a>','sitemap')) . "</li>";
-										}
-									}
-									
 									$et = $status->GetTime();
 									$mem = $status->GetMemoryUsage();
 									
@@ -808,11 +829,6 @@ class GoogleSitemapGeneratorUI {
 								<input type="checkbox" id="sm_b_pingmsn" name="sm_b_pingmsn" <?php echo ($this->sg->GetOption("b_pingmsn")==true?"checked=\"checked\"":"") ?> />
 								<label for="sm_b_pingmsn"><?php _e('Notify Bing (formerly MSN Live Search) about updates of your Blog', 'sitemap') ?></label><br />
 								<small><?php echo str_replace("%s",$this->sg->GetRedirectLink('sitemap-lwt'),__('No registration required, but you can join the <a href="%s">Bing Webmaster Tools</a> to check crawling statistics.','sitemap')); ?></small>
-							</li>
-							<li>
-								<input type="checkbox" id="sm_b_pingask" name="sm_b_pingask" <?php echo ($this->sg->GetOption("b_pingask")==true?"checked=\"checked\"":"") ?> />
-								<label for="sm_b_pingask"><?php _e('Notify Ask.com about updates of your Blog', 'sitemap') ?></label><br />
-								<small><?php _e('No registration required.','sitemap'); ?></small>
 							</li>
 							<li>
 								<label for="sm_b_robots">
@@ -1073,7 +1089,7 @@ class GoogleSitemapGeneratorUI {
 						
 							$enabledPostTypes = $this->sg->GetOption('in_customtypes');
 						
-							if(count($taxonomies)>0) {
+							if(count($custom_post_types)>0) {
 								?><b><?php _e('Custom post types', 'sitemap') ?>:</b><ul><?php 
 							
 								foreach ($custom_post_types as $post_type) {

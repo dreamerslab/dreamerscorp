@@ -4,36 +4,41 @@ global $hyper_cache_stop;
 
 $hyper_cache_stop = false;
 
+// If no-cache header support is enabled and the browser explicitly requests a fresh page, do not cache
+if ($hyper_cache_nocache &&
+    ((!empty($_SERVER['HTTP_CACHE_CONTROL']) && $_SERVER['HTTP_CACHE_CONTROL'] == 'no-cache') ||
+     (!empty($_SERVER['HTTP_PRAGMA']) && $_SERVER['HTTP_PRAGMA'] == 'no-cache'))) return hyper_cache_exit();
+
 // Do not cache post request (comments, plugins and so on)
-if ($_SERVER["REQUEST_METHOD"] == 'POST') return false;
+if ($_SERVER["REQUEST_METHOD"] == 'POST') return hyper_cache_exit();
 
 // Try to avoid enabling the cache if sessions are managed with request parameters and a session is active
-if (defined('SID') && SID != '') return false;
+if (defined('SID') && SID != '') return hyper_cache_exit();
 
 $hyper_uri = $_SERVER['REQUEST_URI'];
 $hyper_qs = strpos($hyper_uri, '?');
 
 if ($hyper_qs !== false) {
     if ($hyper_cache_strip_qs) $hyper_uri = substr($hyper_uri, 0, $hyper_qs);
-    else if (!$hyper_cache_cache_qs) return false;
+    else if (!$hyper_cache_cache_qs) return hyper_cache_exit();
 }
 
-if (strpos($hyper_uri, 'robots.txt') !== false) return false;
+if (strpos($hyper_uri, 'robots.txt') !== false) return hyper_cache_exit();
 
 // Checks for rejected url
 if ($hyper_cache_reject !== false) {
     foreach($hyper_cache_reject as $uri) {
         if (substr($uri, 0, 1) == '"') {
-            if ($uri == '"' . $hyper_uri . '"') return false;
+            if ($uri == '"' . $hyper_uri . '"') return hyper_cache_exit();
         }
-        if (substr($hyper_uri, 0, strlen($uri)) == $uri) return false;
+        if (substr($hyper_uri, 0, strlen($uri)) == $uri) return hyper_cache_exit();
     }
 }
 
 if ($hyper_cache_reject_agents !== false) {
     $hyper_agent = strtolower($_SERVER['HTTP_USER_AGENT']);
     foreach ($hyper_cache_reject_agents as $hyper_a) {
-        if (strpos($hyper_agent, $hyper_a) !== false) return false;
+        if (strpos($hyper_agent, $hyper_a) !== false) return hyper_cache_exit();
     }
 }
 
@@ -41,7 +46,7 @@ if ($hyper_cache_reject_agents !== false) {
 if ($hyper_cache_reject_cookies !== false) {
     foreach ($hyper_cache_reject_cookies as $hyper_c) {
         foreach ($_COOKIE as $n=>$v) {
-            if (substr($n, 0, strlen($hyper_c)) == $hyper_c) return false;
+            if (substr($n, 0, strlen($hyper_c)) == $hyper_c) return hyper_cache_exit();
         }
     }
 }
@@ -50,22 +55,23 @@ if ($hyper_cache_reject_cookies !== false) {
 
 foreach ($_COOKIE as $n=>$v) {
 // If it's required to bypass the cache when the visitor is a commenter, stop.
-    if ($hyper_cache_comment && substr($n, 0, 15) == 'comment_author_') return false;
+    if ($hyper_cache_comment && substr($n, 0, 15) == 'comment_author_') return hyper_cache_exit();
 
     // SHIT!!! This test cookie makes to cache not work!!!
     if ($n == 'wordpress_test_cookie') continue;
     // wp 2.5 and wp 2.3 have different cookie prefix, skip cache if a post password cookie is present, also
     if (substr($n, 0, 14) == 'wordpressuser_' || substr($n, 0, 10) == 'wordpress_' || substr($n, 0, 12) == 'wp-postpass_') {
-        return false;
+        return hyper_cache_exit();
     }
 }
 
 // Do not cache WP pages, even if those calls typically don't go throught this script
-if (strpos($hyper_uri, '/wp-') !== false) return false;
+if (strpos($hyper_uri, '/wp-') !== false) return hyper_cache_exit();
 
 // Multisite
-if (function_exists('is_multisite') && is_multisite() && strpos($hyper_uri, '/files/') !== false) return false;
+if (function_exists('is_multisite') && is_multisite() && strpos($hyper_uri, '/files/') !== false) return hyper_cache_exit();
 
+// Prefix host, and for wordpress 'pretty URLs' strip trailing slash (e.g. '/my-post/' -> 'my-site.com/my-post')
 $hyper_uri = $_SERVER['HTTP_HOST'] . $hyper_uri;
 
 // The name of the file with html and other data
@@ -89,6 +95,15 @@ $hc_invalidation_time = @filemtime($hyper_cache_path . '_global.dat');
 if ($hc_invalidation_time && $hc_file_time < $hc_invalidation_time) {
     hyper_cache_start();
     return;
+}
+
+if (array_key_exists("HTTP_IF_MODIFIED_SINCE", $_SERVER)) {
+    $if_modified_since = strtotime(preg_replace('/;.*$/', '', $_SERVER["HTTP_IF_MODIFIED_SINCE"]));
+    if ($if_modified_since >= $hc_file_time) {
+        header($_SERVER['SERVER_PROTOCOL'] . " 304 Not Modified");
+        flush();
+        die();
+    }
 }
 
 // Load it and check is it's still valid
@@ -117,32 +132,38 @@ if ($hyper_data['location']) {
 }
 
 // It's time to serve the cached page
-if (array_key_exists("HTTP_IF_MODIFIED_SINCE", $_SERVER)) {
-    $if_modified_since = strtotime(preg_replace('/;.*$/', '', $_SERVER["HTTP_IF_MODIFIED_SINCE"]));
-    if ($if_modified_since >= $hc_file_time) {
-        header("HTTP/1.0 304 Not Modified");
-        flush();
-        die();
-    }
+
+if (!$hyper_cache_browsercache) {
+    // True if browser caching NOT enabled (default)
+    header('Cache-Control: no-cache, must-revalidate, max-age=0');
+    header('Pragma: no-cache');
+    header('Expires: Wed, 11 Jan 1984 05:00:00 GMT');
+}
+else {
+    $maxage = $hyper_cache_timeout - $hc_file_age;
+    header('Cache-Control: max-age=' . $maxage);
+    header('Expires: ' . gmdate("D, d M Y H:i:s", time() + $maxage) . " GMT");
 }
 
-// Now serve the real content
-
 // True if user ask to NOT send Last-Modified
-header('Cache-Control: no-cache, must-revalidate, max-age=0');
-header('Pragma: no-cache');
-header('Expires: Wed, 11 Jan 1984 05:00:00 GMT');
 if (!$hyper_cache_lastmodified) {
     header('Last-Modified: ' . gmdate("D, d M Y H:i:s", $hc_file_time). " GMT");
 }
 
 header('Content-Type: ' . $hyper_data['mime']);
-if ($hyper_data['status'] == 404) header("HTTP/1.1 404 Not Found");
+if ($hyper_data['status'] == 404) header($_SERVER['SERVER_PROTOCOL'] . " 404 Not Found");
 
 // Send the cached html
-if ($hyper_cache_gzip && strpos($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip') !== false && strlen($hyper_data['gz']) > 0) {
+if (strpos($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip') !== false &&
+    (($hyper_cache_gzip && !empty($hyper_data['gz'])) || ($hyper_cache_gzip_on_the_fly && function_exists('gzencode')))) {
     header('Content-Encoding: gzip');
-    echo $hyper_data['gz'];
+    header('Vary: Accept-Encoding');
+    if (!empty($hyper_data['gz'])) {
+        echo $hyper_data['gz'];
+    }
+    else {
+        echo gzencode($hyper_data['html']);
+    }
 }
 else {
 // No compression accepted, check if we have the plain html or
@@ -151,10 +172,14 @@ else {
     //header('Content-Length: ' . strlen($hyper_data['html']));
         echo $hyper_data['html'];
     }
-    else {
+    else if (function_exists('gzinflate')) {
         $buffer = hyper_cache_gzdecode($hyper_data['gz']);
-        if ($buffer === false) echo 'Error retriving the content';
+        if ($buffer === false) echo 'Error retrieving the content';
         else echo $buffer;
+    }
+    else {
+        // Cannot decode compressed data, serve fresh page
+        return false;
     }
 }
 flush();
@@ -177,7 +202,7 @@ function hyper_cache_start($delete=true) {
 
 // Called whenever the page generation is ended
 function hyper_cache_callback($buffer) {
-    global $hyper_cache_notfound, $hyper_cache_stop, $hyper_cache_charset, $hyper_cache_home, $hyper_cache_redirects, $hyper_redirect, $hc_file, $hyper_cache_name, $hyper_cache_gzip;
+    global $hyper_cache_notfound, $hyper_cache_stop, $hyper_cache_charset, $hyper_cache_home, $hyper_cache_redirects, $hyper_redirect, $hc_file, $hyper_cache_name, $hyper_cache_browsercache, $hyper_cache_timeout, $hyper_cache_lastmodified, $hyper_cache_gzip, $hyper_cache_gzip_on_the_fly;
 
     if (!function_exists('is_home')) return $buffer;
     
@@ -235,6 +260,25 @@ function hyper_cache_callback($buffer) {
 
     hyper_cache_write($data);
 
+    if ($hyper_cache_browsercache) {
+        header('Cache-Control: max-age=' . $hyper_cache_timeout);
+        header('Expires: ' . gmdate("D, d M Y H:i:s", time() + $hyper_cache_timeout) . " GMT");
+    }
+
+    // True if user ask to NOT send Last-Modified
+    if (!$hyper_cache_lastmodified) {
+        header('Last-Modified: ' . gmdate("D, d M Y H:i:s", @filemtime($hc_file)). " GMT");
+    }
+    
+    if (($hyper_cache_gzip && !empty($data['gz'])) || ($hyper_cache_gzip_on_the_fly && !empty($data['html']) && function_exists('gzencode'))) {
+        header('Content-Encoding: gzip');
+        header('Vary: Accept-Encoding');
+        if (empty($data['gz'])) {
+            $data['gz'] = gzencode($data['html']);
+        }
+        return $data['gz'];
+    }
+
     return $buffer;
 }
 
@@ -244,15 +288,13 @@ function hyper_cache_write(&$data) {
     $data['uri'] = $_SERVER['REQUEST_URI'];
 
     // Look if we need the compressed version
-    if ($hyper_cache_store_compressed) {
+    if ($hyper_cache_store_compressed && !empty($data['html']) && function_exists('gzencode')) {
         $data['gz'] = gzencode($data['html']);
         if ($data['gz']) unset($data['html']);
     }
     $file = fopen($hc_file, 'w');
     fwrite($file, serialize($data));
     fclose($file);
-
-    header('Last-Modified: ' . date("r", @filemtime($hc_file)));
 }
 
 function hyper_mobile_type() {
@@ -311,4 +353,11 @@ function hyper_cache_gzdecode ($data) {
         $headerlen += 2;
     $unpacked = gzinflate(substr($data, $headerlen));
     return $unpacked;
+}
+
+function hyper_cache_exit() {
+    global $hyper_cache_gzip_on_the_fly;
+
+    if ($hyper_cache_gzip_on_the_fly && extension_loaded('zlib')) ob_start('ob_gzhandler');
+    return false;
 }

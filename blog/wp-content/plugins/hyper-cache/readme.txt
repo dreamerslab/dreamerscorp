@@ -1,7 +1,7 @@
 === Hyper Cache ===
 Tags: cache,chaching,speed,performance,super cache,wp cache,optimization,staticization
 Requires at least: 2.5
-Tested up to: 3.3.1
+Tested up to: 3.5
 Stable tag: trunk
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=2545483
 Contributors: satollo,momo360modena
@@ -71,6 +71,35 @@ See the [Hyper Cache official page](http://www.satollo.net/plugins/hyper-cache)
 No screenshots are available.
 
 == Changelog ==
+
+= 2.9.0.3 =
+
+* potential duplicated content fix
+
+= 2.9.0.2 =
+
+* added French translation
+
+= 2.9.0.1 =
+
+* small fix for trailing slashes
+
+= 2.9.0 =
+
+All patches listed below are by Florian Höch (as soon has his blog will be online I'll give a link to it)
+
+* compression on the fly option when browser accept compressed data but is set to not store it
+* added the Vary header
+* fixed the Cache-Control/Expires and Last-Modified headers
+* remove the trailing slash for permalink (even if WordPress should send a redirect and Hyper Cache should already intercept it)
+* added a few safety checks for gzencode/decode functions in cache.php
+* new configuration option: allow browser caching
+* allow browser to bypass the server-side cache
+* some options panel fixes and improvements
+
+= 2.8.9 =
+
+* TW and CN translations changed (by Ragnarok)
 
 = 2.8.8 =
 

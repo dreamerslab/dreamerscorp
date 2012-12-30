@@ -4,7 +4,7 @@ Plugin Name: Smart Youtube PRO
 Plugin URI: http://www.prelovac.com/vladimir/wordpress-plugins/smart-youtube
 Description: Insert YouTube videos in posts, comments and RSS feeds with ease and full customization.
 Author: Vladimir Prelovac
-Version: 4.1.4
+Version: 4.1.8
 Author URI: http://www.prelovac.com/vladimir/
 
 
@@ -332,7 +332,7 @@ class SmartYouTube_PRO {
 <link rel="stylesheet" type="text/css" href="' . $this->plugin_url . '/styleyt.css" />';
 		
 		$imgpath = $this->plugin_url.'/i';
-		$actionurl = $_SERVER['REQUEST_URI'];
+		$actionurl = stripslashes(htmlentities(strip_tags($_SERVER['REQUEST_URI'])));
 		$nonce = wp_create_nonce( 'smart-youtube' );
 		$example = htmlentities( '<div style="float:left;margin-right: 10px;">{video}</div>' );
 		
@@ -490,7 +490,7 @@ class SmartYouTube_PRO {
 					<div style="margin: 0 0 0 4px; clear: both;">
 						<input type="checkbox" id="autoplay_checkbox" name="autoplay" <?php echo $disp_autoplay; ?> /><label for="autoplay_checkbox"><?php _e( 'Autoplay videos', 'smart-youtube' ); ?></label><br />
 						<input type="checkbox" id="autoplay_first_checkbox" name="autoplay_first" <?php echo $disp_autoplay_first; ?> /><label for="autoplay_first_checkbox"><?php _e( 'Autoplay only first video on page', 'smart-youtube' ); ?></label><br />
-						<input type="checkbox" id="loop_checkbox" name="loop" <? echo $disp_loop; ?> /><label for="loop_checkbox"><?php _e( 'Loop videos', 'smart-youtube' ); ?></label><br />
+						<input type="checkbox" id="loop_checkbox" name="loop" <?php echo $disp_loop; ?> /><label for="loop_checkbox"><?php _e( 'Loop videos', 'smart-youtube' ); ?></label><br />
 						<input type="checkbox" id="disp_search" name="disp_search" <?php echo $disp_search; ?> /><label for="disp_search"><?php _e( 'Display search box', 'smart-youtube' ); ?></label><br />
 						<input type="checkbox" id="thumb_checkbox" name="thumb" <?php echo $thumb; ?> /><label for="thumb_checkbox"><?php _e( 'Display thumbnails on home/archive pages', 'smart-youtube' ); ?></label><br />
 						<input type="checkbox" id="cbox_checkbox" name="colorbox" <?php echo $colorbox; ?> /><label for="cbox_checkbox"><?php _e( 'Show video in colorbox', 'smart-youtube' ); ?></label><br />
@@ -526,7 +526,7 @@ class SmartYouTube_PRO {
 					<label for="tag"><?php _e( 'Custom code', 'smart-youtube' ); ?></label>
 					 
 					<h3><?php _e( 'WiziApp support', 'smart-youtube' ); ?></h3>
-					<p><?php _e( 'WiziApp helps you to publish your blog as an iPhone app. This will integrate your video seamlessly. <a href="http://www.wiziapp.com/?a_aid=smartyoutube">Learn more about WiziApp</a>.', 'smart-youtube' ); ?></p>
+					<p><?php _e( 'This will integrate your video seamlessly with WiziApp', 'smart-youtube' ); ?></p>
 					<input id="wiziapp" type="checkbox" name="wiziapp" <?php echo $wiziapp; ?> />
 					<label for="wiziapp"><?php _e( 'Enable WiziApp support', 'smart-youtube' ); ?></label>
 					<h3><?php _e( 'xHTML validation', 'smart-youtube' ); ?></h3>
@@ -563,7 +563,7 @@ class SmartYouTube_PRO {
 		}
 		
 		$imgpath = $this->plugin_url . '/i';
-		$actionurl = $_SERVER['REQUEST_URI'];
+		$actionurl = stripslashes(htmlentities(strip_tags($_SERVER['REQUEST_URI'])));
 		
 		$this->options = $this->get_options();
 	?>
@@ -612,7 +612,7 @@ class SmartYouTube_PRO {
 		
 		$upd_msg = "";
 		
-		$actionurl = $_SERVER['REQUEST_URI'];
+		$actionurl = stripslashes(htmlentities(strip_tags($_SERVER['REQUEST_URI'])));
 		$nonce = wp_create_nonce( 'smart-youtube' );
 		
 		$lic_msg = '<p>Welcome to ' . __( 'Smart YouTube PRO', 'smart-youtube' ) . '.</p>';
@@ -666,7 +666,7 @@ class SmartYouTube_PRO {
 		
 		$context = $side ? 'side' : 'post';
 		
-		preg_match_all( "/((http(v|vh|vhd)?:\/\/)?([a-zA-Z0-9\-\_]+\.|)?youtube\.com\/watch(\?v\=|\/v\/|#!v=)([a-zA-Z0-9\-\_]{11})([^<\s]*))|((http(v|vh|vhd)?:\/\/)?([a-zA-Z0-9\-\_]+\.|)?youtu\.be\/([a-zA-Z0-9\-\_]{11}))|((http(v|vh|vhd)?:\/\/)?([a-zA-Z0-9\-\_]+\.|)?metacafe\.com\/watch\/([a-zA-Z0-9\-\_]{7})\/([^<^\/\s]*)([\/])?)|((http(v|vh|vhd)?:\/\/)?([a-zA-Z0-9\-\_]+\.|)?vimeo\.com\/([a-zA-Z0-9\-\_]{8})([\/])?)|((http(v|vh|vhd)?:\/\/)?([a-zA-Z0-9\-\_]+\.|)?liveleak\.com\/view(\?i\=)([a-zA-Z0-9\-\_]*))|((http(v|vh|vhd)?:\/\/)?([a-zA-Z0-9\-\_]+\.|)?facebook\.com\/video\/video.php\?v\=([a-zA-Z0-9\-\_]*))|((http(vp|vhp)?:\/\/)?([a-zA-Z0-9\-\_]+\.|)?youtube\.com\/(view_play_list\?p\=|playlist\?list\=)([a-zA-Z0-9\-\_]{18})([^<\s]*))/", $the_content, $matches, PREG_SET_ORDER );
+		preg_match_all( "/((http(v|vh|vhd)?:\/\/)?([a-zA-Z0-9\-\_]+\.|)?youtube\.com\/watch(\?v\=|\/v\/|#!v=)([a-zA-Z0-9\-\_]{11})([^<\s]*))|((http(v|vh|vhd)?:\/\/)?([a-zA-Z0-9\-\_]+\.|)?youtu\.be\/([a-zA-Z0-9\-\_]{11}))|((http(v|vh|vhd)?:\/\/)?([a-zA-Z0-9\-\_]+\.|)?metacafe\.com\/watch\/([a-zA-Z0-9\-\_]{7})\/([^<^\/\s]*)([\/])?)|((http(v|vh|vhd)?:\/\/)?([a-zA-Z0-9\-\_]+\.|)?vimeo\.com\/([a-zA-Z0-9\-\_]{8})([\/])?)|((http(v|vh|vhd)?:\/\/)?([a-zA-Z0-9\-\_]+\.|)?liveleak\.com\/view(\?i\=)([a-zA-Z0-9\-\_]*))|((http(v|vh|vhd)?:\/\/)?([a-zA-Z0-9\-\_]+\.|)?facebook\.com\/video\/video.php\?v\=([a-zA-Z0-9\-\_]*))|((http(vp|vhp)?:\/\/)?([a-zA-Z0-9\-\_]+\.|)?youtube\.com\/(view_play_list\?p\=|playlist\?list\=)([a-zA-Z0-9\-\_]{18,34})([^<\s]*))/", $the_content, $matches, PREG_SET_ORDER );
 		
 		foreach ( $matches as $match ) {
 			if ( $match[1] != '' ) {
@@ -936,7 +936,9 @@ EOT;
 		$disp_ann = $this->options['ann'] == 'on' ? '&iv_load_policy=3' : '';
 		$template = trim( $this->options['template'] ) == '' ? '{video}' : $this->options['template']; 
 		$valid = $this->options['valid'];
-		$loop = $this->options['loop'];
+		if ($this->options['loop'])		
+			$loop="&loop=1&playlist=$file";
+		else $loop='';
 		$thumb = $this->options['thumb'];
 		$colorbox = $this->options['colorbox'];
 		$logoless = $this->options['logoless'];
@@ -1036,12 +1038,12 @@ EOT;
 			}
 		} else {
 			if ( $this->options['iframe'] == 'on' )
-				$video_url = htmlspecialchars( "$root_url/embed/$file?wmode=transparent&fs=1&hl=en$ap$ll&loop=$loop{$disp_info}$disp_ann&showsearch=$disp_search&rel=$disp_rel&theme=$theme", ENT_QUOTES ) . $high . $time;
+				$video_url = htmlspecialchars( "$root_url/embed/$file?wmode=transparent&fs=1&hl=en$ap$ll$loop{$disp_info}$disp_ann&showsearch=$disp_search&rel=$disp_rel&theme=$theme", ENT_QUOTES ) . $high . $time;
 			else
-				$video_url = htmlspecialchars( "$root_url/v/$file?wmode=transparent&fs=1&hl=en&$ap$ll&loop=$loop{$disp_info}$disp_ann&showsearch=$disp_search&rel=$disp_rel&theme=$theme", ENT_QUOTES ) . $high . $time;
+				$video_url = htmlspecialchars( "$root_url/v/$file?wmode=transparent&fs=1&hl=en&$ap$ll$loop{$disp_info}$disp_ann&showsearch=$disp_search&rel=$disp_rel&theme=$theme", ENT_QUOTES ) . $high . $time;
 			
 			if ( $playlist ) {				
-				$video_url = htmlspecialchars( "$root_url/embed/videoseries?list=$file&fs=1&hl=en$ap$ll&loop=$loop{$disp_info}$disp_ann&showsearch=$disp_search&rel=$disp_rel&theme=$theme", ENT_QUOTES ) . $high . $time;
+				$video_url = htmlspecialchars( "$root_url/embed/videoseries?list=$file&fs=1&hl=en$ap$ll$loop{$disp_info}$disp_ann&showsearch=$disp_search&rel=$disp_rel&theme=$theme", ENT_QUOTES ) . $high . $time;
 				$yte_tag = <<<EOT
 <span class="youtube"><iframe class="youtube-player" src="$video_url" width="$width" height="$height" frameborder="0" allowfullscreen></iframe></span>
 EOT;
